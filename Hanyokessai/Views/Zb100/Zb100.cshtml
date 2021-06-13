@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "ZB100";
+    int cnt = @Model.Count();
+}
+@using Hanyokessai.Models
+@model IEnumerable<Zb100Dto>
+
+<div class="text-center">
+    <p class="h1">ユーザー情報管理一覧</p>
+</div>
+
+@if (cnt == 0)
+{
+    <div class="container">
+        <div class="alert alert-danger m-3">
+            <h2><b>利用不可</b></h2>
+            管理者専用のページです。
+        </div>
+        <div class="text-center">
+            <a role="button" class="btn btn-outline-info" asp-action="event_Cancel" asp-controller="Zb100" asp-area="">戻る</a>
+        </div>
+    </div>
+}
+else
+{
+
+<div class="container rounded-lg p-3">
+    <p class="float-left text-justify align-bottom">▼ユーザー情報一覧</p>
+    <div class="text-right">
+        <a class="btn btn-outline-secondary" asp-action="event_Cancel" asp-controller="Zb100" asp-area="">戻る</a>
+    </div>
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <td>
+                    会員ID
+                </td>
+                <td>
+                    会員メール
+                </td>
+                <td>
+                    会員名
+                </td>
+                <td>
+                    会社
+                </td>
+                <td colspan="2">
+                    所属部署
+                </td>
+                <td>
+                    職位
+                </td>
+                <td>
+                    入社日
+                </td>
+                <td colspan="2">
+                </td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <td>
+                        @row.labelId
+                    </td>
+                    <td>
+                        @row.labelMail
+                    </td>
+                    <td>
+                        @row.labelName
+                    </td>
+                    <td>
+                        @row.labelCom
+                    </td>
+                    <td>
+                        @row.labelDep1
+                    </td>
+                    <td>
+                        @row.labelDep2
+                    </td>
+                    <td>
+                        @row.labelPos
+                    </td>
+                    <td>
+                        @row.labelEntryDate
+                    </td>
+                    <td>
+                    <form method="post" asp-controller="Zb100" asp-action="event_Inquiry">
+                        <button type="submit" class="btn btn-sm btn-outline-primary" value="@row.labelId" name="Mail">照会</button>
+                    </form>
+                    </td>
+                    <td>
+                        <input type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#userDelete_@row.labelId" value="削除">
+                        <div class="modal fade" role="dialog" id="userDelete_@row.labelId">
+
+                            <div class="modal-dialog">
+                                <form method="post" asp-controller="Zb100" asp-action="event_Delete">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <p class="h5 text-md-left" id="modalTitle">ユーザー削除</p>
+                                            <a href="#" class="close text-right" data-dismiss="modal">&times;</a>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="alert alert-danger">
+                                                該当ユーザー情報の削除してもよろしいでしょうか？
+                                                @row.labelId
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-outline-danger" value="@row.labelMail" name="Mail">削除</button>
+                                                <a role="button" class="btn btn-outline-info" data-dismiss="modal" href="#">キャンセル</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+}
+
+

@@ -1,0 +1,241 @@
+﻿@model Hanyokessai.Models.Zb300Dto
+@{ ViewData["Title"] = "ZB300"; }
+<head>
+    <style type="text/css">
+
+        * {
+            font-family: 'Meiryo UI'
+        }
+
+        .verifyEmail {
+            padding-left: 40px;
+            position: absolute;
+            top: 4px;
+        }
+
+        .card-body {
+            padding: 5px 200px;
+        }
+
+        .input-group-text {
+            text-align: justify;
+            display: inline-block;
+            background-color: white;
+        }
+
+        .disable {
+            background-color: #e9ecef;
+        }
+
+        #file-chosen {
+            margin-left: 0.3rem;
+        }
+    </style>
+</head>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        const actualBtn = document.getElementById('actual-btn');
+
+        const fileChosen = document.getElementById('file-chosen');
+
+        actualBtn.addEventListener('change', function () {
+            fileChosen.textContent = this.files[0].name
+        })
+
+        function chageStampStatus() {
+            if ($('input:radio[id=radioExist]').is(':checked')) {
+                $('#upLoadStamp').show();
+            } else {
+                $('#upLoadStamp').hide();
+            }
+        }
+
+        $(document).ready(function () {
+            var chkValue = $('input[type=radio][id="radioExist"]:checked').val();
+            if (chkValue) {
+                $('input:radio[id=radioNotExist]').removeAttr("checked");
+                $('#upLoadStamp').show();
+            } else {
+                $('input:radio[id=radioNotExist]').prop("checked", true);
+                $('#upLoadStamp').hide();
+
+            }
+        });
+
+    </script>
+}
+<body>
+    <div>
+        <div class="text-center">
+            <h2>ユーザー情報修正</h2>
+        </div>
+        <div>
+            @{ for (var i = 0; i < @Model.errorMessege.Count(); i++)
+                {
+                    <ul calss="verifyEmail"><li type="disc">@Model.errorMessege[i]</li></ul> } }
+            @Html.ValidationSummary()
+        </div>
+        <div class="card-body">
+            <form class="form-horizontal" method="post" asp-controller="Zb300" asp-action="event_Modify" enctype="multipart/form-data">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>メール</th>
+                            <td>
+                                <input type="text" class="input-group-text disable" name="txtMail" asp-for="txtMail" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>パスワード</th>
+                            <td>
+                                <input type="text" class="input-group-text disable" name="txtPwd" asp-for="txtPwd" readonly />
+                                <input type="button" id="btnApvl" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#modalInit" value="初期化" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>会員名_カナ</th>
+                            <td>
+                                <input type="text" placeholder="ｾｲ" asp-for="txtKanaFirstName" class="input-group-text" maxlength="30">
+                                <input type="text" placeholder="ﾒｲ" asp-for="txtKanaLastName" class="input-group-text" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>会員名_漢字</th>
+                            <td>
+                                <input type="text" placeholder="姓" asp-for="txtKanjiFirstName" class="input-group-text" maxlength="30">
+                                <input type="text" placeholder="名" asp-for="txtKanjiLastName" class="input-group-text" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>会員名_英語</th>
+                            <td>
+                                <input type="text" placeholder="first name" asp-for="txtEngFirstName" class="input-group-text" maxlength="30">
+                                <input type="text" placeholder="last name" asp-for="txtEngLastName" class="input-group-text" maxlength="30">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>性別</th>
+                            <td>
+                                <select class="input-group-text" asp-for="txtGender">
+                                    <option value="1"> 男性 </option>
+                                    <option value="2"> 女性 </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>携帯番号</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="phoneNumber" placeholder="123-1234-1234" asp-for="txtPhone" maxlength="13">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>郵便番号</th>
+                            <td>
+                                <input type="text" class="input-group-text" id="zipCode" placeholder="123-1234" asp-for="txtZipcode" maxlength="8">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>住所</th>
+                            <td>
+                                <input type="text" placeholder="住所" asp-for="txtAddress" class="input-group-text" maxlength="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>会社名</th>
+                            <td>
+                                <input type="text" class="input-group-text" name="txtCompanyCode" asp-for="txtCompanyCode" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>所属</th>
+                            <td>
+                                <select asp-for="txtDepartment1" class="input-group-text">
+                                    @for (var i = 0; i < Model.txtDep1CdList.Count(); i++)
+                                    {
+                                        <option value="@Model.txtDep1CdList[i]">@Model.txtDep1NameList[i]</option>
+                                    }
+                                </select>
+                                <select asp-for="txtDepartment2" class="input-group-text">
+                                    @for (var i = 0; i < Model.txtDep2CdList.Count(); i++)
+                                    {
+                                        <option value="@Model.txtDep2CdList[i]">@Model.txtDep2CdNameList[i]</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>職位</th>
+                            <td>
+                                <select asp-for="txtPosition" class="input-group-text">
+                                    @for (var i = 0; i < Model.txtComPosCdList.Count(); i++)
+                                    {
+                                        <option value="@Model.txtComPosCdList[i]">@Model.txtComPosCdNameList[i]</option>
+                                    }
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>入社日</th>
+                            <td>
+                                <input type="date" class="input-group-text" asp-for="txtEnterDate" max="9999-12-31" placeholder="txtEnterDate">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>押印情報有無</th>
+                            <td>
+                                <input type="radio" name="stampStatusRadio" id="radioExist" value="1" onchange="chageStampStatus()" checked="@Model.stampFlg">
+                                あり
+                                <input type="radio" name="stampStatusRadio" id="radioNotExist" value="0" onchange="chageStampStatus()">
+                                なし
+                            </td>
+                        </tr>
+                        <tr id="upLoadStamp">
+                            <th>押印情報</th>
+                            <td>
+                                <div>
+                                    <img name="txtimgStamp" alt="stamp image" id="imgStamp" asp-append-version="true" src="@Model.txtimgStamp" />
+                                </div>
+                                <div class="text-center">
+                                    <span id="file-chosen">ファイルを選択してください。</span>
+                                    <input type="file" id="actual-btn" hidden />
+                                    <label for="actual-btn" class="btn btn-outline-primary btn-sm">アップロード</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center">
+                    <input type="submit" class="btn btn-primary" asp-controller="Zb300" asp-action="event_Modify" value="会員修正" />
+                    <input type="submit" class="btn btn-secondary" asp-controller="Zb300" asp-action="event_Cancel" value="キャンセル" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--モーダル-->
+    <div class="modal fade" role="dialog" id="modalInit">
+        <div class="modal-dialog">
+            <form method="post" asp-controller="Zb300" asp-action="event_Reset_Password">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p class="h5 text-md-left" id="modalTitle">ユーザー削除</p>
+                        <a href="#" class="close text-right" data-dismiss="modal">&times;</a>
+                    </div>
+                    <div class="modal-body text-center">
+                        <div class="alert alert-danger">
+                            該当ユーザーのパスワードを初期化してもよろしいでしょうか？<br />
+                            対象ユーザー : @Model.member_id<br />
+                            初期化後パスワード : password
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-outline-danger" value="@Model.txtMail" name="kaiinMail">初期化</button>
+                            <a role="button" class="btn btn-outline-info" data-dismiss="modal" href="#">キャンセル</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--モーダル-->
+</body>

@@ -1,0 +1,251 @@
+﻿@model Hanyokessai.Models.Ka500Dto;
+@using System.Data;
+
+@{
+    ViewData["Title"] = "決裁対象照会";
+}
+
+<head>
+    <style>
+        .reject {
+            width: 100%;
+            border: 0;
+            resize: none;
+            Word-break: break-all;
+        }
+        th {
+            background-color: rgb(220,230,241);
+        }
+        table, th, td {
+            border: 1px solid black !important;
+        }
+        .tbl_check {
+            font-size: large;
+            font-weight: bold;
+        }
+        th {
+            width: 200px;
+        }
+        .th_size1 {
+            width: 100px !important;
+        }
+        .th_size2 {
+            width: 250px !important;
+        }
+        .td_size1 {
+            width: 87px !important;
+        }
+        .td_size2 {
+            width: 140px !important;
+        }
+        .com_cd {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<div>
+    <h1>決裁対象照会</h1><br>
+</div>
+
+<table class="table table-bordered">
+    <label class="tbl_check">【ファイル名】</label>
+    <tr>
+        <th><label>帳票ファイル</label></th>
+        <td colspan="6"><label>@Model.LB_file_nm</label></td>
+        <td class="td_size2"><button>ダウンロード</button></td>
+    </tr>
+    <tr>
+        <th><label>テンプレートファイル</label></th>
+        <td colspan="7"><label>@Model.LB_templete_file_nm</label></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <label class="tbl_check">【テンプレート詳細内容】</label>
+    <tr>
+        <th><label>テンプレート名</label></th>
+        <td colspan="7"><label>@Model.LB_templete_nm</label></td>
+    </tr>
+    <tr>
+        <th><label>テンプレート詳細内容</label></th>
+        <td colspan="7"><label>@Model.LB_templete_detail</label></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <label class="tbl_check">【帳票作成者】</label>
+    <tr>
+        <th rowspan="2"><label>会社コード</label></th>
+        <td rowspan="2" class="com_cd"><label>@Model.LB_com_cd_reg</label></td>
+        <th class="th_size1"><label>所属</label></th>
+        <td><label>@Model.LB_dep_cd_reg1　@Model.LB_dep_cd_reg2</label></td>
+        <th class="th_size1"><label>職位</label></th>
+        <td><label>@Model.LB_pos_cd_reg</label></td>
+    </tr>
+    <tr>
+        <th class="th_size1"><label>作成者</label></th>
+        <td><label>@Model.LB_reg_id</label></td>
+        <th class="th_size1"><label>作成日付</label></th>
+        <td><label>@Model.LB_reg_date_reg</label>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <label class="tbl_check">【帳票更新者】</label>
+    <tr>
+        <th rowspan="2"><label>会社コード</label></th>
+        <td rowspan="2" class="com_cd"><label>@Model.LB_com_cd_upd</label></td>
+        <th class="th_size1"><label>所属</label></th>
+        <td><label>@Model.LB_dep_cd_upd1　@Model.LB_dep_cd_upd2</label></td>
+        <th class="th_size1"><label>職位</label></th>
+        <td><label>@Model.LB_pos_cd_upd</label></td>
+    </tr>
+    <tr>
+        <th class="th_size1"><label>更新者</label></th>
+        <td><label>@Model.LB_upd_id</label></td>
+        <th class="th_size1"><label>更新日付</label></th>
+        <td><label>@Model.LB_upd_date</label>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <label class="tbl_check">【帳票の基本情報】</label>
+    <tr>
+        <th><label>帳票名</label></th>
+        <td colspan="2"><label>@Model.LB_report_nm</label></td>
+    </tr>
+    <tr>
+        <th><label>帳票詳細内容</label></th>
+        <td colspan="4"><label>@Model.LB_report_detail</label>
+    </tr>
+</table>
+<table class="table table-bordered">
+    &nbsp;
+    <tr>
+        <th><label>ステータス</label></th>
+        <td><label>@Model.LB_status</label>
+        <th><label>決裁予定日</label></th>
+        <td colspan="5"><label>@Model.LB_approval_date_plan</label></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    <label class="tbl_check">【決裁手順】</label>
+    <tr>
+        <th><label>押印順番</label></th>
+        <th colspan="2" class="th_size1"><label>決裁者</label></th>
+        <th colspan="3"><label>メール</label></th>
+        <th class="th_size1"><label>押印位置</label></th>
+        <th class="th_size2"><label>決裁日</label></th>
+    </tr>
+    <tr>
+        <th><label>決裁１</label></th>
+        <td colspan="2"><label>@Model.LB_member1</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail1</label></td>
+        <td><label>@Model.LB_approval_place1</label></td>
+        <td><label>@Model.LB_approval_date1</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁2</label></th>
+        <td colspan="2"><label>@Model.LB_member2</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail2</label></td>
+        <td><label>@Model.LB_approval_place2</label></td>
+        <td><label>@Model.LB_approval_date2</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁3</label></th>
+        <td colspan="2"><label>@Model.LB_member3</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail3</label></td>
+        <td><label>@Model.LB_approval_place3</label></td>
+        <td><label>@Model.LB_approval_date3</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁4</label></th>
+        <td colspan="2"><label>@Model.LB_member4</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail4</label></td>
+        <td><label>@Model.LB_approval_place4</label></td>
+        <td><label>@Model.LB_approval_date4</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁5</label></th>
+        <td colspan="2"><label>@Model.LB_member5</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail5</label></td>
+        <td><label>@Model.LB_approval_place5</label></td>
+        <td><label>@Model.LB_approval_date5</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁6</label></th>
+        <td colspan="2"><label>@Model.LB_member6</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail6</label></td>
+        <td><label>@Model.LB_approval_place6</label></td>
+        <td><label>@Model.LB_approval_date6</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁7</label></th>
+        <td colspan="2"><label>@Model.LB_member7</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail7</label></td>
+        <td><label>@Model.LB_approval_place7</label></td>
+        <td><label>@Model.LB_approval_date7</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁8</label></th>
+        <td colspan="2"><label>@Model.LB_member8</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail8</label></td>
+        <td><label>@Model.LB_approval_place8</label></td>
+        <td><label>@Model.LB_approval_date8</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁9</label></th>
+        <td colspan="2"><label>@Model.LB_member9</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail9</label></td>
+        <td><label>@Model.LB_approval_place9</label></td>
+        <td><label>@Model.LB_approval_date9</label></td>
+    </tr>
+    <tr>
+        <th><label>決裁10</label></th>
+        <td colspan="2"><label>@Model.LB_member10</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail10</label></td>
+        <td><label>@Model.LB_approval_place10</label></td>
+        <td><label>@Model.LB_approval_date10</label></td>
+    </tr>
+</table>
+<table class="table table-bordered">
+    &nbsp;
+    <tr>
+        <th><label>最終決裁者</label></th>
+        <td colspan="2" class="td_size1"><label>@Model.LB_member_last</label></td>
+        <td colspan="3"><label>@Model.LB_approval_mail_last</label></td>
+        <td class="th_size1"><label>@Model.LB_approval_place_last</label></td>
+        <td class="th_size2"><label>@Model.LB_approval_date_last</label></td>
+    </tr>
+</table>
+<label class="tbl_check">【却下情報】</label>
+<div align="right">
+    <form style="display:inline" asp-controller="Ka500" asp-action="approval_reject">
+        <table class="table table-bordered">
+
+            <tr>
+                <th><label>却下者</label></th>
+                <td colspan="2" class="td_size1"><label>@Model.LB_reject_mail</label></td>
+                <th><label>却下日</label></th>
+                <td colspan="4" width="200"><label>@Model.LB_reject_date</label></td>
+            </tr>
+            <tr style="display:@Model.TXT_act; height:150px;">
+                <th><label>却下理由</label></th>
+                <td colspan="7" style="padding:0px">
+                    <textarea class="form-control reject" style="height:150px;" asp-for="TXT_reject_detail" placeholder="却下理由を入力してください。"></textarea>
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" class="form-control" name="reportId" asp-for="@Model.report_id">
+        <input type="hidden" class="form-control" name="templetId" asp-for="@Model.templete_id">
+        <button type="submit" style="display:@Model.BTN_act;">却下</button>
+    </form>
+    <form style="display:inline" asp-controller="Ka500" asp-action="approval_sign">
+        <input type="hidden" class="form-control" name="reportId" asp-for="@Model.report_id">
+        <input type="hidden" class="form-control" name="templetId" asp-for="@Model.templete_id">
+        <button type="submit" style="display:@Model.BTN_act;">押印</button>
+    </form>
+    <form style="display:inline">
+        <button asp-controller="Ka500" asp-action="approval_cancel">キャンセル</button>
+    </form>
+</div>
+
+

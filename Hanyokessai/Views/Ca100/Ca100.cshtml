@@ -1,0 +1,153 @@
+﻿@{
+    ViewData["Title"] = "Ca100";
+}
+@model Hanyokessai.Models.Ca100Dto
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h3 class="display-4">帳票作成</h3>
+    <br>
+    @{ for (var i = 0; i < @Model.errorMessege.Count(); i++)
+        {
+            <ul calss="verifyEmail"><li type="disc">@Model.errorMessege[i]</li></ul> } }
+    @Html.ValidationSummary()
+    <form class="form-horizontal" method="post" name="writeForm" asp-controller="Ca100" asp-action="Report_Register" enctype="multipart/form-data">
+        <div>
+            <div class="text-lg-left font-weight-bold">・帳票アップロード</div>
+            <!--アップロード処理追加-->
+            <div class="row pl-3">
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">帳票ファイル</div>
+                <div class="col col-10">
+                    <div class="custom-file">
+                        @*<input type="file" class="custom-file-input" id="reportFile" asp-for="reportFile" aria-describedby="reportFile">
+                            <label class="custom-file-label" for="reportFile">choose file</label>*@
+                        <input type="file" class="btn btn-outline-warning btn-block" id="reportFile" asp-for="reportFile" placeholder="アップロード" name="reportFile" style="overflow:hidden" accept=".xls,.xlsx,.xlsm">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div>
+            <div class="text-lg-left font-weight-bold">・基本情報</div>
+            <div class="row pl-3">
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">テンプレート名</div>
+                <div class="col col-10">
+                    @Html.DropDownListFor(m => m.selTempleteID, new SelectList(ViewBag.data, "templeteID", "templeteName"), "--------------選択--------------", new { @id = "temp", @class = "form-control js-select js-noFilter hidden", @onchange = "javascript:getReportData(this)" })
+                </div>
+            </div>
+            <div class="row pl-3">
+                <div class="col col-2 p-2 text-center bg-skyblue text-dark font-weight-bold">会社名</div>
+                <div class="col col-2 p-2 pl-3">@Model.lbComName</div>
+                <div class="col col-2 p-2 text-center bg-skyblue text-dark font-weight-bold">所属部署</div>
+                <div class="col p-2 pl-3">@Model.lbDep1</div>
+                <div class="col p-2 pl-3">@Model.lbDep2</div>
+                <div class="col col-2 p-2 text-center bg-skyblue text-dark font-weight-bold">職位</div>
+                <div class="col p-2 pl-3">@Model.lbPos</div>
+            </div>
+            <div class="row pl-3">
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">作成者名</div>
+                <div class="col col-2 pt-2">@Model.lbAuthorName</div>
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">決裁予定日</div>
+                <div class="col col-2 pt-2">
+                    @Html.EditorFor(m => m.lbPlanYmd, new { htmlAttributes = new { @class = "form-control datepicker" } })
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div>
+            <div class="text-lg-left font-weight-bold">・帳票情報</div>
+            <div class="row pl-3">
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">帳票名</div>
+                <div class="col col-10 pt-2">
+                    @Html.TextBoxFor(m => m.txtReportName, new { style = "width:100%; height:100%", @class = "form-control", @maxlength = "50" })
+                </div>
+            </div>
+            <div class="row pl-3" style="height:300px">
+                <div class="col col-2 pt-2 text-center bg-skyblue text-dark font-weight-bold">特異事項</div>
+                <div class="col col-10 pt-2">
+                    @Html.TextAreaFor(m => m.txtReportDetail, new { style = "width:100%; height:100%", @class = "form-control", @maxlength = "500" })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <div class="text-lg-left font-weight-bold">・決裁順番、押印位置</div>
+            <div id="tbl_Approve">
+                @Html.Partial("Ca100partialView")
+            </div>
+        </div>
+        <br />
+        <div align="right">
+            <button class="btn btn-outline-primary" id="btnApvl" type="submit" style="width:100px" asp-controller="Ca100" asp-action="event_Modify">登録</button>
+            <!--モーダル処理追加-->
+            <input type="button" id="btnApvl" class="btn btn-outline-secondary" data-toggle="modal" data-target="#modalCancel" value="キャンセル" />
+            <div class="modal fade" role="dialog" id="modalCancel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="h5 text-left" id="modalTitle">キャンセル</p>
+                            <a href="#" class="close text-right" data-dismiss="modal">&times;</a>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-danger text-left">
+                                作成をキャンセルしますか?<br />
+                                (今まで作成したデータは保存されません。)
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-outline-danger" asp-controller="Ca100" asp-action="event_Cancel">確認</button>
+                                <a role="button" class="btn btn-outline-info" data-dismiss="modal" href="#">キャンセル</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script type="text/javascript">
+    var dateType = $(".datepicker").datepicker('getDate');
+    $(".datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'yy/mm/dd'
+    });
+
+    function getReportData(obj) {
+        var templeteID = $(obj).val();
+        if (templeteID && templeteID != '') {
+            $.ajax({
+                url: '@Url.Action("event_Select", "Ca100")',
+                type: 'GET',
+                cache: false,
+                data: { "templeteID": templeteID },
+            }).done(function (result) {
+                $('#tbl_Approve').html(result);
+            });
+        } else {
+            //alert("false")
+        }
+    }
+
+    $("#txtReportName").bind("keyup",function() {
+        re = /[\[\]."/;:|¥￥=,]/gi;
+        var temp = $("#txtReportName").val();
+        if(re.test(temp)) {
+            $("#txtReportName").val(temp.replace(re, ""));
+        }
+    });
+
+</script>
+
+<style>
+    .bg-skyblue {
+        background-color: #CEECF5;
+    }
+</style>

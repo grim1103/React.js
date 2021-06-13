@@ -1,0 +1,238 @@
+﻿@model Hanyokessai.Models.Zb400Dto;
+@using System.Data;
+
+@{
+    ViewData["Title"] = "押印グループ管理";
+}
+
+<head>
+    <style>
+        th {
+            background-color: rgb(117,113,113);
+            text-align: center;
+            color: white;
+        }
+
+        table, th, td {
+            border: 1px solid black !important;
+            padding: 5px !important;
+        }
+
+        .th_size1 {
+            width: 200px;
+        }
+
+        .th_size2 {
+            width: 100px;
+        }
+
+        .th_size3 {
+            width: 50px;
+        }
+
+        .th_size4 {
+            width: 170px;
+        }
+
+        .inputTxt {
+            width: 100%;
+            border: 0;
+            resize: none;
+            Word-break: break-all;
+            padding: 0px;
+        }
+
+        .td_size1 {
+            width: 400px;
+        }
+
+        .td_size2 {
+            width: 570px;
+        }
+
+        .tbl_check {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .stylelabel {
+            background-color: white;
+            border: none !important;
+            color: black;
+        }
+
+        .delbtn {
+            padding: 2px 8px !important;
+            width: 50px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<div style="text-align:center;">
+    <h3>押印グループ管理画面</h3><br>
+</div>
+
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="6">押印グループ情報</th>
+        </tr>
+        <tr>
+            <th class="th_size1">押印グループメール</th>
+            <th class="th_size1">押印グループ概要</th>
+            <th class="th_size2">登録ユーザ名</th>
+            <th class="th_size2">更新ユーザ名</th>
+            <th class="th_size3"></th>
+            <th class="th_size3"></th>
+        </tr>
+        @foreach (var data in Model.zb400SelectLists)
+        {
+            <tr>
+                <td>@data.mail</td>
+                <td>@data.detail</td>
+                <td>@data.reg</td>
+                <td>@data.upd</td>
+                <form asp-controller="Zb400" asp-action="MaillistSelect">
+                    <input type="hidden" class="form-control" name="chkmail" asp-for="@data.mail">
+                    <td style="text-align:center;"><button class="btn btn-sm btn-outline-primary">照会</button></td>
+                </form>
+                <form asp-controller="Zb400" asp-action="MaillistDelete">
+                    <input type="hidden" class="form-control" name="mail" asp-for="@data.mail">
+                    <td style="text-align:center;"><button class="btn btn-outline-danger delbtn">削除</button></td>
+                </form>
+                
+            </tr>
+        }
+        </table>
+        <div align="right">
+            <form asp-controller="Zb400" asp-action="maillistForm">
+                <button>グループ登録</button>
+            </form>
+        </div>
+    </div>
+    <br />
+
+    <div align="right" style="display:@Model.Inputbtn;">
+        <form asp-controller="Zb400" asp-action="MaillistInsert">
+            <table style="border:none !important;">
+                <tr>
+                    <th class="stylelabel" style="text-align:left;"><label class="tbl_check">基本情報</label></th>
+                </tr>
+                <tr>
+                    <th class="th_size4">押印グループメール</th>
+                    <td class="td_size1"><textarea class="form-control inputTxt" asp-for="mailList_mail" placeholder="押印グループメールを入力してください。"></textarea></td>
+                </tr>
+            </table>
+            <table>
+                &nbsp;
+                <tr>
+                    <th class="th_size4">押印グループ概要</th>
+                    <td class="td_size1"><textarea class="form-control inputTxt" asp-for="mailList_detail" placeholder="押印グループ概要を入力してください。"></textarea></td>
+                </tr>
+            </table><br /><br />
+            <table style="border:none !important;">
+                <tr>
+                    <th class="stylelabel" style="text-align:left;"><label class="tbl_check">グループ情報</label></th>
+                </tr>
+                <tr>
+                    <th class="th_size4">社員メール</th>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail1" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail2" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail3" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail4" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail5" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail6" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail7" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail8" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail9" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail10" placeholder="社員メールを入力してください。"></textarea></td>
+                </tr>
+            </table><br />
+            <div align="right">
+                <button type="submit">登録</button>
+            </div>
+        </form>
+    </div>
+
+    <div align="right" style="display:@Model.Updatebtn;">
+        <form asp-controller="Zb400" asp-action="MaillistUpdate">
+            <table style="border:none !important;">
+                <tr>
+                    <th class="stylelabel" style="text-align:left;"><label class="tbl_check">基本情報</label></th>
+                </tr>
+                <tr>
+                    <th class="th_size4">押印グループメール</th>
+                    <td class="td_size1"><textarea class="form-control inputTxt" asp-for="mailList_mail" placeholder="押印グループメールを入力してください。">@Model.mailList_mail</textarea></td>
+                </tr>
+            </table>
+            <table>
+                &nbsp;
+                <tr>
+                    <th class="th_size4">押印グループ概要</th>
+                    <td class="td_size1"><textarea class="form-control inputTxt" asp-for="mailList_detail" placeholder="押印グループ概要を入力してください。">@Model.mailList_detail</textarea></td>
+                </tr>
+            </table><br /><br />
+            <table style="border:none !important;">
+                <tr>
+                    <th class="stylelabel" style="text-align:left;"><label class="tbl_check">グループ情報</label></th>
+                </tr>
+                <tr>
+                    <th class="th_size4">社員メール</th>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail1" placeholder="社員メールを入力してください。">@Model.mail1</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail2" placeholder="社員メールを入力してください。">@Model.mail2</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail3" placeholder="社員メールを入力してください。">@Model.mail3</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail4" placeholder="社員メールを入力してください。">@Model.mail4</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail5" placeholder="社員メールを入力してください。">@Model.mail5</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail6" placeholder="社員メールを入力してください。">@Model.mail6</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail7" placeholder="社員メールを入力してください。">@Model.mail7</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail8" placeholder="社員メールを入力してください。">@Model.mail8</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail9" placeholder="社員メールを入力してください。">@Model.mail9</textarea></td>
+                </tr>
+                <tr>
+                    <td class="td_size2"><textarea class="form-control inputTxt" asp-for="mail10" placeholder="社員メールを入力してください。">@Model.mail10</textarea></td>
+                </tr>
+            </table><br />
+            <div align="right">
+                <button type="submit">修正</button>
+            </div>
+        </form>
+    </div>

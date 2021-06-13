@@ -1,0 +1,96 @@
+﻿@using Microsoft.AspNetCore.Http
+@model Hanyokessai.Models.Za100Dto
+@{
+    ViewData["Title"] = "Main";
+}
+<html lang="en">
+<head>
+    <title>Main</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="text-center">
+        <div class="container">
+            <input type="hidden" class="form-control" asp-for="member_id">
+            <input type="hidden" class="form-control" asp-for="mail">
+            <input type="hidden" class="form-control" asp-for="authority_cd">
+            <h3>【 Main Page 】</h3>
+            <p>実行する機能を選択してください</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_usersyokai" style="text-align:center">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257_1280.png" alt="UserSyokai" style="width:299px; height:170px;">
+                            <div class="caption">
+                                会員情報照会
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_template" style="text-align:center">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/11/19/48/cube-3311598_1280.png" alt="TemplateKanri" style="width:299px; height:170px;">
+                            <div class="caption">
+                                テンプレート管理
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_tyohyo" style="text-align:center">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/graph-3331249_1280.png" alt="TyohyoItiran" style="width:299px; height:170px;">
+                            <div class="caption">
+                                帳票一覧
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="thumbnail">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_kessai" style="text-align:center">
+                            <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/graph-3331246_1280.png" alt="KessaiKanri" style="width:299px; height:170px;">
+                            <div class="caption">
+                                決済管理
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                @if (Context.Session.GetString("authorityCd").Equals("1"))
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_userkanri" style="text-align:center">
+                                <img src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331258_1280.png" alt="UserKanriItiran" style="width:299px; height:170px;">
+                                <div class="caption">
+                                    ユーザ情報管理一覧
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (Context.Session.GetString("authorityCd").Equals("1"))
+                {
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Za100" asp-action="event_ouin" style="text-align:center">
+                                <img src="https://cdn.pixabay.com/photo/2018/04/10/17/44/3d-printer-3308166_1280.png" alt="OuinKanri" style="width:299px; height:170px;">
+                                <div class="caption">
+                                    押印グループ管理
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                } 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

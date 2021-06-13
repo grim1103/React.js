@@ -1,0 +1,294 @@
+﻿@model Hanyokessai.Models.Ca400Dto
+@using System.Data;
+
+@{
+    ViewData["Title"] = "帳票照会";
+}
+
+<head>
+    <style>
+        .reject {
+            width: 100%;
+            border: 0;
+            resize: none;
+            Word-break: break-all;
+        }
+
+        th {
+            background-color: rgb(220,230,241);
+        }
+
+        table, th, td {
+            border: 1px solid black !important;
+        }
+
+        .tbl_check {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        th {
+            width: 200px;
+        }
+
+        .th_size1 {
+            width: 100px !important;
+        }
+
+        .th_size2 {
+            width: 250px !important;
+        }
+
+        .td_size1 {
+            width: 87px !important;
+        }
+
+        .td_size2 {
+            width: 140px !important;
+        }
+
+        .td_size3 {
+            width: 200px !important;
+        }
+
+        .com_cd {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="text-left">
+        <br />
+        <h3>帳票照会</h3>
+        <br />
+        <label style="display:@Model.lnk_show">作成元帳票ID：</label>
+        <a style="display:@Model.lnk_show" asp-controller="Ca400" asp-action="reportBef" asp-route-bef_report_id="@Model.bef_report_id">@Model.bef_report_id</a>
+        <br />
+        <table class="table table-bordered">
+            <tr>
+                <th>ファイル名</th>
+                <td colspan="6">@Model.file_name</td>
+                <td class="td_size2">
+                    <form>
+                        <button>ダウンロード</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <label class="tbl_check">【テンプレート情報】</label>
+        <table class="table table-bordered">
+            <tr>
+                <th>テンプレート名</th>
+                <td colspan="7">@Model.templete_name</td>
+            </tr>
+            <tr>
+                <th>テンプレート<br />詳細内容</th>
+                <td colspan="7">@Model.templete_detail</td>
+            </tr>
+        </table>
+        <label class="tbl_check">【帳票詳細内容】 </label>
+        <table class="table table-bordered">
+            <tr>
+                <th rowspan="2">会社名</th>
+                <td rowspan="2">@Model.reg_com_cd</td>
+                <th>所属</th>
+                <td colspan="2">@Model.reg_dep1_cd @Model.reg_dep2_cd</td>
+                <th>職位</th>
+                <td colspan="2">@Model.reg_pos_cd</td>
+            </tr>
+            <tr>
+                <th>登録者</th>
+                <td colspan="2">@Model.reg_member_fistname @Model.reg_member_lastname</td>
+                <th>登録日</th>
+                <td colspan="2">@Model.reg_date</td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <tr>
+                <th rowspan="2">会社名</th>
+                <td rowspan="2">@Model.upd_com_cd</td>
+                <th>所属</th>
+                <td colspan="2">@Model.upd_dep1_cd @Model.upd_dep2_cd</td>
+                <th>職位</th>
+                <td colspan="2">@Model.upd_pos_cd</td>
+            </tr>
+            <tr>
+                <th>更新者</th>
+                <td colspan="2">@Model.upd_member_fistname @Model.upd_member_lastname</td>
+                <th>更新日</th>
+                <td colspan="2">@Model.upd_date</td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <tr>
+                <th>決裁予定日</th>
+                <td colspan="3">@Model.approval_date_plan</td>
+                <th>ステータス</th>
+                <td colspan="3">@Model.status</td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <tr>
+                <th>帳票名</th>
+                <td colspan="7">@Model.report_name</td>
+            </tr>
+            <tr>
+                <th>特異事項</th>
+                <td colspan="7">@Model.report_detail</td>
+            </tr>
+        </table>
+        <label class="tbl_check">【押印詳細内容】 </label>
+        <table class="table table-bordered">
+            <tr>
+                <th>押印順番</th>
+                <th colspan="2">押印者</th>
+                <th colspan="2">メール</th>
+                <th>押印位置</th>
+                <th colspan="2">決裁日</th>
+            </tr>
+            <tr>
+                <th>決裁１</th>
+                <td colspan="2">@Model.approval_status1</td>
+                <td colspan="2">@Model.approval_mail1</td>
+                <td>@Model.approval_place1</td>
+                <td colspan="2">@Model.approval_date1</td>
+            </tr>
+            <tr>
+                <th>決裁２</th>
+                <td colspan="2">@Model.approval_status2</td>
+                <td colspan="2">@Model.approval_mail2</td>
+                <td>@Model.approval_place2</td>
+                <td colspan="2">@Model.approval_date2</td>
+            </tr>
+            <tr>
+                <th>決裁３</th>
+                <td colspan="2">@Model.approval_status3</td>
+                <td colspan="2">@Model.approval_mail3</td>
+                <td>@Model.approval_place3</td>
+                <td colspan="2">@Model.approval_date3</td>
+            </tr>
+            <tr>
+                <th>決裁４</th>
+                <td colspan="2">@Model.approval_status4</td>
+                <td colspan="2">@Model.approval_mail4</td>
+                <td>@Model.approval_place4</td>
+                <td colspan="2">@Model.approval_date4</td>
+            </tr>
+            <tr>
+                <th>決裁５</th>
+                <td colspan="2">@Model.approval_status5</td>
+                <td colspan="2">@Model.approval_mail5</td>
+                <td>@Model.approval_place5</td>
+                <td colspan="2">@Model.approval_date5</td>
+            </tr>
+            <tr>
+                <th>決裁６</th>
+                <td colspan="2">@Model.approval_status6</td>
+                <td colspan="2">@Model.approval_mail6</td>
+                <td>@Model.approval_place6</td>
+                <td colspan="2">@Model.approval_date6</td>
+            </tr>
+            <tr>
+                <th>決裁７</th>
+                <td colspan="2">@Model.approval_status7</td>
+                <td colspan="2">@Model.approval_mail7</td>
+                <td>@Model.approval_place7</td>
+                <td colspan="2">@Model.approval_date7</td>
+            </tr>
+            <tr>
+                <th>決裁８</th>
+                <td colspan="2">@Model.approval_status8</td>
+                <td colspan="2">@Model.approval_mail8</td>
+                <td>@Model.approval_place8</td>
+                <td colspan="2">@Model.approval_date8</td>
+            </tr>
+            <tr>
+                <th>決裁９</th>
+                <td colspan="2">@Model.approval_status9</td>
+                <td colspan="2">@Model.approval_mail9</td>
+                <td>@Model.approval_place9</td>
+                <td colspan="2">@Model.approval_date9</td>
+            </tr>
+            <tr>
+                <th>決裁１０</th>
+                <td colspan="2">@Model.approval_status10</td>
+                <td colspan="2">@Model.approval_mail10</td>
+                <td>@Model.approval_place10</td>
+                <td colspan="2">@Model.approval_date10</td>
+            </tr>
+        </table>
+        <table class="table table-bordered">
+            <tr>
+                <th>最終決裁者</th>
+                <td colspan="2" class="td_size3">@Model.approval_status_last</td>
+                <td colspan="2" class="td_size3">@Model.approval_mail_last</td>
+                <td class="td_size3">@Model.approval_place_last</td>
+                <td colspan="2" class="td_size3">@Model.approval_date_last</td>
+            </tr>
+        </table>
+        <label class="tbl_check">【却下詳細内容】 </label>
+        <table class="table table-bordered">
+            <tr>
+                <th rowspan="2">会社名</th>
+                <td rowspan="2">@Model.reject_com_cd</td>
+                <th>所属</th>
+                <td colspan="2">@Model.reject_dep1_cd @Model.reject_dep2_cd</td>
+                <th>職位</th>
+                <td colspan="2">@Model.reject_pos_cd</td>
+            </tr>
+            <tr>
+                <th>却下者</th>
+                <td colspan="2">@Model.reject_member_fistname @Model.reject_member_lastname</td>
+                <th>却下日</th>
+                <td colspan="2">@Model.reject_date</td>
+            </tr>
+            <tr>
+                <th>却下者メール</th>
+                <td colspan="7">@Model.reject_mail</td>
+            </tr>
+            <tr>
+                <th>却下理由</th>
+                <td colspan="7">@Model.reject_detail</td>
+            </tr>
+        </table>
+        <br />
+        <div style="text-align:right">
+            <form style="display:inline" method="post" asp-controller="Ca200" asp-action="Event_Initial">
+                <input type="hidden" class="form-control" name="reportId" asp-for="@Model.report_id">
+                <input type="hidden" class="form-control" name="templeteId" asp-for="@Model.templete_id">
+                <input type="hidden" class="form-control" name="btnFlg" asp-for="@Model.btnFlg">
+                <button type="submit" style="display:@Model.upd_btn">修正</button>
+            </form>
+            <div style="display:inline">
+                <button data-toggle="modal" style="display:@Model.del_btn" data-target="#reportDelete_@Model.report_id">削除</button>
+                <div class="modal fade" role="dialog" id="reportDelete_@Model.report_id">
+
+                    <div class="modal-dialog">
+                        <form method="post" asp-controller="Ca400" asp-action="reportDelete">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="h5 text-md-left" id="modalTitle">帳票削除</p>
+                                    <a href="#" class="close text-right" data-dismiss="modal">&times;</a>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-danger" style="text-align:center;">該当帳票情報を削除してもよろしいでしょうか？</div>
+                                    <div class="text-center">
+                                        <input type="hidden" class="form-control" name="reportId" asp-for="@Model.report_id">
+                                        <input type="hidden" class="form-control" name="templeteId" asp-for="@Model.templete_id">
+                                        <button type="submit" class="btn btn-outline-danger">削除</button>
+                                        <a role="button" class="btn btn-outline-info" data-dismiss="modal" href="#">キャンセル</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <form style="display:inline">
+                <button asp-controller="Ca400" asp-action="reportBack">戻る</button>
+            </form>
+        </div>
+    </div>
+</body>

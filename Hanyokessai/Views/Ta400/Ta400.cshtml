@@ -1,0 +1,448 @@
+﻿@{
+    ViewData["Title"] = "Template";
+}
+@model Hanyokessai.Models.Ta400Dto
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#selApprover1').change(function () {
+            $('#checkAbleFlg1').attr('value', '0');
+        });
+        $('#selApprover2').change(function () {
+            $('#checkAbleFlg2').attr('value', '0');
+        });
+        $('#selApprover3').change(function () {
+            $('#checkAbleFlg3').attr('value', '0');
+        });
+        $('#selApprover4').change(function () {
+            $('#checkAbleFlg4').attr('value', '0');
+        });
+        $('#selApprover5').change(function () {
+            $('#checkAbleFlg5').attr('value', '0');
+        });
+        $('#selApprover6').change(function () {
+            $('#checkAbleFlg6').attr('value', '0');
+        });
+        $('#selApprover7').change(function () {
+            $('#checkAbleFlg7').attr('value', '0');
+        });
+        $('#selApprover8').change(function () {
+            $('#checkAbleFlg8').attr('value', '0');
+        });
+        $('#selApprover9').change(function () {
+            $('#checkAbleFlg9').attr('value', '0');
+        });
+        $('#selApprover10').change(function () {
+            $('#checkAbleFlg10').attr('value', '0');
+        });
+        $('#txtApproPlace1').change(function () {
+            if ($('#selApprover1').val() != "") {
+                $('#txtApproPlace2').removeAttr('disabled');
+                $('#selApprover2').removeAttr('disabled');
+                $('#txtApprovalMail2').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace2').change(function () {
+            if ($('#selApprover2').val() != "") {
+                $('#txtApproPlace3').removeAttr('disabled');
+                $('#selApprover3').removeAttr('disabled');
+                $('#txtApprovalMail3').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace3').change(function () {
+            if ($('#selApprover3').val() != "") {
+                $('#txtApproPlace4').removeAttr('disabled');
+                $('#selApprover4').removeAttr('disabled');
+                $('#txtApprovalMail4').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace4').change(function () {
+            if ($('#selApprover4').val() != "") {
+                $('#txtApproPlace5').removeAttr('disabled');
+                $('#selApprover5').removeAttr('disabled');
+                $('#txtApprovalMail5').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace5').change(function () {
+            if ($('#selApprover5').val() != "") {
+                $('#txtApproPlace6').removeAttr('disabled');
+                $('#selApprover6').removeAttr('disabled');
+                $('#txtApprovalMail6').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace6').change(function () {
+            if ($('#selApprover6').val() != "") {
+                $('#txtApproPlace7').removeAttr('disabled');
+                $('#selApprover7').removeAttr('disabled');
+                $('#txtApprovalMail7').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace7').change(function () {
+            if ($('#selApprover7').val() != "") {
+                $('#txtApproPlace8').removeAttr('disabled');
+                $('#selApprover8').removeAttr('disabled');
+                $('#txtApprovalMail8').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace8').change(function () {
+            if ($('#selApprover8').val() != "") {
+                $('#txtApproPlace9').removeAttr('disabled');
+                $('#selApprover9').removeAttr('disabled');
+                $('#txtApprovalMail9').removeAttr('disabled');
+            }
+        });
+        $('#txtApproPlace9').change(function () {
+            if ($('#selApprover9').val() != "") {
+                $('#txtApproPlace10').removeAttr('disabled');
+                $('#selApprover10').removeAttr('disabled');
+                $('#txtApprovalMail10').removeAttr('disabled');
+            }
+        });
+    });</script>
+
+
+<div class="text-center">
+    <p class="h1">テンプレート修正</p>
+</div>
+
+@if (Model.auth == "0")
+{
+    <div class="container">
+        <div class="alert alert-danger m-3">
+            <h2><b>利用不可</b></h2>
+            管理者専用のページです。
+        </div>
+        <div class="text-center">
+            <a class="btn btn-outline-secondary" asp-action="event_main" asp-controller="Ta400" asp-area="">キャンセル</a>
+        </div>
+    </div>
+}
+else
+{
+    <br>
+    {
+        for (var i = 0; i < @Model.errorMessege.Count(); i++)
+        {
+            <ul calss="verifyEmail"><li type="disc">@Model.errorMessege[i]</li></ul>
+        }
+    }
+    @Html.ValidationSummary()
+    <div class="text-right pt-4">
+        <form method="post" asp-controller="Ta400" asp-action="event_cancel">
+            <input type="hidden" name="temp_id" asp-for="@Model.temp_id" />
+            <button type="submit" class="btn btn-outline-secondary" name="temp_id">キャンセル</button>
+        </form>
+    </div>
+    <form class="form-horizontal" method="post" asp-action="event_modify" asp-controller="Ta400" enctype="multipart/form-data">
+        <div class="text-lg-left font-weight-bold h5 pt-3">
+            テンプレート基本情報
+        </div>
+        <div class="row p-2">
+            <div class="col col-3 bg-light text-center font-weight-bold pt-2">
+                テンプレートID
+            </div>
+            <div class="col col-9">
+                <input type="text" value="@Model.txtTemId" class="form-control" asp-for="txtTemId" maxlength="6" />
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col col-3 bg-light text-center font-weight-bold pt-2">
+                テンプレート名
+            </div>
+            <div class="col col-9">
+                <input type="text" value="@Model.txtTemName" class="form-control" asp-for="txtTemName" maxlength="50" />
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col col-3 bg-light text-center font-weight-bold pt-2">
+                テンプレートファイル
+            </div>
+            <div class="col col-9">
+                <input type="file" class="btn btn-outline-dark btn-block" id="reportFile" asp-for="reportFile" placeholder="アップロード" name="reportFile">
+            </div>
+        </div>
+        <div class="row p-2">
+            <div class="col col-3 bg-light text-center font-weight-bold pt-2">
+                テンプレート詳細内容
+            </div>
+            <div class="col col-9">
+                <textarea class="form-control" style="height:300px;" asp-for="txtRepDetail">@Model.txtRepDetail</textarea>
+            </div>
+        </div>
+        <div class="text-lg-left font-weight-bold h5 pt-3">
+            押印情報
+        </div>
+        <div class="row text-center">
+            <div class="col col-3 bg-light text-lg-center font-weight-bold p-2">
+                押印順番
+            </div>
+            <div class="col col-2 bg-light text-lg-center font-weight-bold p-2">
+                決裁者
+            </div>
+            <div class="col bg-light text-lg-center font-weight-bold p-2">
+                決裁者Email
+            </div>
+            <div class="col col-2 bg-light text-lg-center font-weight-bold p-2">
+                押印位置
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                起案者
+            </div>
+            <div class="col col-2 text-center">
+                -
+            </div>
+            <div class="col text-center">
+                -
+            </div>
+            <div class="col col-2">
+
+                <input type="text" value="@Model.txtStartApproPlace" class="form-control" asp-for="txtStartApproPlace" id="appr_p_start" maxlength="10" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁１
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover1" class="custom-select">
+                    <option selected value="@Model.selApprover1">@Model.selApprover1</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail1" class="form-control" asp-for="txtApproMail1" id="appr_mail1" />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace1" class="form-control" asp-for="txtApproPlace1" id="appr_p1" maxlength="10" />
+                <input type="hidden" asp-for="checkAbleFlg1" id="checkAbleFlg1" value="1" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁2
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover2" class="custom-select" >
+                    <option selected value="@Model.selApprover2">@Model.selApprover2</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail2" class="form-control" asp-for="txtApproMail2" id="appr_mail2"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace2" class="form-control" asp-for="txtApproPlace2" id="appr_p2" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg2" id="checkAbleFlg2" value="1" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁3
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover3" class="custom-select" >
+                    <option selected value="@Model.selApprover3">@Model.selApprover3</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail3" class="form-control" asp-for="txtApproMail3" id="appr_mail3"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace3" class="form-control" asp-for="txtApproPlace3" id="appr_p3" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg3" id="checkAbleFlg3" value="1" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁4
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover4" class="custom-select" >
+                    <option selected value="@Model.selApprover4">@Model.selApprover4</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail4" class="form-control" asp-for="txtApproMail4" id="appr_mail4"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace4" class="form-control" asp-for="txtApproPlace4" id="appr_p4" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg4" id="checkAbleFlg4" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁5
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover5" class="custom-select" >
+                    <option selected value="@Model.selApprover5">@Model.selApprover5</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail5" class="form-control" asp-for="txtApproMail5" id="appr_mail5"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace5" class="form-control" asp-for="txtApproPlace5" id="appr_p5" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg5" id="checkAbleFlg5" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁6
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover6" class="custom-select" >
+                    <option selected value="@Model.selApprover6">@Model.selApprover6</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail6" class="form-control" asp-for="txtApproMail6" id="appr_mail6"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace6" class="form-control" asp-for="txtApproPlace6" id="appr_p6" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg6" id="checkAbleFlg6" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁7
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover7" class="custom-select" >
+                    <option selected value="@Model.selApprover7">@Model.selApprover7</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail7" class="form-control" asp-for="txtApproMail7" id="appr_mail7"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace7" class="form-control" asp-for="txtApproPlace7" id="appr_p7" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg7" id="checkAbleFlg7" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁8
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover8" class="custom-select" >
+                    <option selected value="@Model.selApprover8">@Model.selApprover8</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail8" class="form-control" asp-for="txtApproMail8" id="appr_mail8"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace8" class="form-control" asp-for="txtApproPlace8" id="appr_p8" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg8" id="checkAbleFlg8" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁9
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover9" class="custom-select" >
+                    <option selected value="@Model.selApprover9">@Model.selApprover9</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail9" class="form-control" asp-for="txtApproMail9" id="appr_mail9"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace9" class="form-control" asp-for="txtApproPlace9" id="appr_p9" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg9" id="checkAbleFlg9" value="1" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2">
+                決裁10
+            </div>
+            <div class="col col-3">
+                <select asp-for="selApprover10" class="custom-select" >
+                    <option selected value="@Model.selApprover10">@Model.selApprover10</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtApproMail10" class="form-control" asp-for="txtApproMail10" id="appr_mail10"  />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtApproPlace10" class="form-control" asp-for="txtApproPlace10" id="appr_p10" maxlength="10"  />
+                <input type="hidden" asp-for="checkAbleFlg10" id="checkAbleFlg10" value="1" />
+            </div>
+        </div>
+        <div class="text-lg-left font-weight-bolder h5 pt-3">
+            最終決裁者
+        </div>
+        <div class="row">
+            <div class="col col-3 bg-dark text-white text-center pt-2 pb-2">
+                最終決裁者
+            </div>
+            <div class="col col-3">
+                <select asp-for="selLastApprover" class="custom-select">
+                    <option selected>@Model.selLastApprover</option>
+                    @for (int i = 0; i < @Model.selApproverPosList.Count; i++)
+                    {
+                        <option value="@Model.selApproverPosList[i]">@Model.selApproverNameList[i]</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" value="@Model.txtLastApproMail" class="form-control" asp-for="txtLastApproMail" />
+            </div>
+            <div class="col-2">
+                <input type="text" value="@Model.txtLastApproPlace" class="form-control" asp-for="txtLastApproPlace" maxlength="10" />
+            </div>
+        </div>
+        <div class="text-right pt-4">
+            <input type="hidden" name="temp_id" asp-for="@Model.temp_id" />
+            <input type="submit" value="修正" class="btn btn-outline-info">
+        </div>
+    </form>
+
+
+}
+

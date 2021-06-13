@@ -1,0 +1,208 @@
+﻿@model Hanyokessai.Models.Zb200Dto
+@{
+    ViewData["Title"] = "Zb200";
+}
+<head>
+    <style>
+
+        th {
+            text-align: left;
+            width: 20%;
+            background-color: #bedbe9;
+        }
+
+        td {
+            background-color: lightgray;
+            text-align:center;
+        }
+
+        p, h2 {
+            text-align: left;
+            font-weight: 900;
+        }
+
+        .text-center1 {
+            width: 70%;
+            text-align: center;
+            transform: translate(30%,0%);
+        }
+
+        .name {
+            width: 30%;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <h2>ユーザー情報管理照会</h2>
+        <div class="text-right">
+            <input type="button" id="btnApvl" class="btn btn-danger" data-toggle="modal" data-target="#modalCancel" value="削除" />
+        </div>
+        <!--モーダル-->
+        <div class="modal fade" role="dialog" id="modalCancel">
+            <div class="modal-dialog">
+                <form method="post" asp-controller="Zb100" asp-action="event_Delete">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="h5 text-md-left" id="modalTitle">ユーザー削除</p>
+                            <a href="#" class="close text-right" data-dismiss="modal">&times;</a>
+                        </div>
+                        <div class="modal-body text-center">
+                            <div class="alert alert-danger">
+                                該当ユーザー情報の削除してもよろしいでしょうか？
+                                @Model.labelKaiinId
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-outline-danger" value="@Model.labelKauInMail" name="Mail">削除</button>
+                                <a role="button" class="btn btn-outline-info" data-dismiss="modal" href="#">キャンセル</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--モーダル-->
+        <p>ログイン情報</p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>会員ID</th>
+                    <td>@Model.labelKaiinId</td>
+                </tr>
+                <tr>
+                    <th>パスワード</th>
+                    <td>********</td>
+                </tr>
+                <tr>
+                    <th>権限</th>
+                    <td>
+                        <div class="radio">
+                            @if (Model.labelKenGen.Equals("0"))
+                            {
+                                <label>一般会員</label>
+                            }
+                            else
+                            {
+                                <label>管理者会員</label>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>会社情報</p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>会社名</th>
+                    <td>@Model.labelKaiSyaMei</td>
+                </tr>
+                <tr>
+                    <th>所属１</th>
+                    <td>@Model.labelSyoZoku1</td>
+                </tr>
+                <tr>
+                    <th>所属2</th>
+                    <td>@Model.labelSyoZoku2</td>
+                </tr>
+                <tr>
+                    <th>職位</th>
+                    <td>@Model.labelSyoKui</td>
+                </tr>
+                <tr>
+                    <th>入社日</th>
+                    <td>@Model.labelNyuSyaBi</td>
+                </tr>
+                <tr>
+                    <th>会員メール</th>
+                    <td>@Model.labelKauInMail</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>基本情報</p>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>会員性(漢字)</th>
+                    <td class="name">@Model.labelKanJiSei</td>
+                    <th>会員名(漢字)</th>
+                    <td class="name">@Model.labelKanJiMei</td>
+                </tr>
+                <tr>
+                    <th>会員性（カナ）</th>
+                    <td class="name">@Model.labelKaNaSei</td>
+                    <th>会員名（カナ）</th>
+                    <td class="name">@Model.labelKaNaMei</td>
+                </tr>
+                <tr>
+                    <th>会員性（英語）</th>
+                    <td class="name">@Model.labelEiGoSei</td>
+                    <th>会員名（英語）</th>
+                    <td class="name">@Model.labelEiGoMei</td>
+                </tr>
+                <tr>
+                    <th>性別</th>
+                    <td colspan="3">
+                        <div class="radio">
+                            @if (Model.labelSeiBeTu.Equals("1"))
+                            {
+                                <label>男性</label>
+                            }
+                            else
+                            {
+                                <label>女性</label>
+                            }
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>会員携帯番号</th>
+                    <td colspan="3">@Model.labelKaInTel</td>
+                </tr>
+                <tr>
+                    <th>郵便番号</th>
+                    <td colspan="3">@Model.labelPostNo</td>
+                </tr>
+                <tr>
+                    <th>会員住所</th>
+                    <td colspan="3">@Model.labelAddress</td>
+                </tr>
+                <tr>
+                    <th>押印情報有無</th>
+                    <td colspan="3">
+                        @if (Model.labelOuInUm.Equals("1"))
+                        {
+                            <label>有</label>
+                        }
+                        else
+                        {
+                            <label>無</label>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>押印情報</th>
+                    <td colspan="3">
+                        @if (Model.labelOuInUm.Equals("1"))
+                        {
+                            <img name="imgStamp" alt="stamp image" class="img-thumbnail" asp-append-version="true" src="@Model.labelOuInZyoHo" />
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <th>最新修正日</th>
+                    <td colspan="3">@Model.labelSyuSeiBi</td>
+                </tr>
+                <tr>
+                    <th>最新修正者</th>
+                    <td colspan="3">@Model.labelSyuSeiSya</td>
+                </tr>
+            </tbody>
+        </table>
+        <form method="post" class="text-right">
+            <button type="submit" class="btn btn-primary" asp-controller="Zb200" asp-action="event_modify" value="@Model.labelKauInMail" name="kaiinMail">修正</button>
+            <button type="submit" class="btn btn-secondary" asp-controller="Zb200" asp-action="event_return">戻る</button>
+        </form>
+    </div>
+</body>

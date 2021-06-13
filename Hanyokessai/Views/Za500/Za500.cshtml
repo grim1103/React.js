@@ -1,0 +1,71 @@
+﻿@model Hanyokessai.Models.Za500Dto
+@{
+    ViewData["Title"] = "Za500";
+}
+<head>
+    <style>
+        label {
+            display: block;
+            font-weight: 900;
+            text-align: left;
+        }
+
+        .button {
+            background-color: black;
+            border: none;
+            color: white;
+            padding: 5px 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 140px;
+        }
+    </style>
+    @section Scripts{
+        <script type="text/javascript">
+            $("#btnUnRegister").click(function () {
+                if (confirm("脱会済みのメールアドレスで再登録はできません。\nそれでも脱会しますか？") == false) return false;
+                return true;
+            });
+
+        </script>
+    }
+
+</head>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+    </script>
+}
+<div class="text-center">
+    <h1 class="display-4">会員脱会</h1>
+    <div style="background-color:black; color:white; margin-top:80px; text-align:left; padding-left:5px">脱会について</div>
+    <div style="border: 1px solid black; text-align:left; padding-left: 15px; padding-top:35px; height:100px">※脱会後、登録した会員情報は削除されます。</div>
+    <div class="row">
+        <div class="col-lg-4">
+        
+        </div>
+        <div class="col-lg-4">
+            @Html.ValidationSummary()
+            <form method="post" asp-controller="Za500" asp-action="event_UnRegister">
+                <input type="hidden" class="form-control" asp-for="email">
+                <div id="contact_form" class="form-group">
+                    <label style="margin-top: 30px; text-align:left">パスワード</label>
+                    <input type="password" class="form-control" asp-for="password" width="30" placeholder="PassWord 入力">
+                </div>
+                <button id="btnUnRegister" type="submit" class="button">会員脱会</button>
+                <a class="button" asp-area="" asp-controller="Za500" asp-action="event_Cancel">キャンセル</a>
+            </form>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</div>

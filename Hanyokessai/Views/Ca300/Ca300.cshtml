@@ -1,0 +1,110 @@
+﻿@using Hanyokessai.Models
+@model IEnumerable<Ca300Dto>
+@{
+    ViewData["Title"] = "Ca300";
+}
+<head>
+    <style>
+        #buttonbackground {
+            background-color: rgba(0,0,0,0);
+            font-size: 80px;
+            font-weight: bold;
+            border: 0;
+            outline: 0;
+            shape-margin: 0;
+        }
+
+        #fixedHeader {
+            position: sticky;
+            top: 0;
+        }
+
+        table {
+            width: 100%;
+            border: 3px;
+            border-color: #ffffff;
+        }
+
+            table > thead > tr > th {
+                background-color: #CEECF5;
+                border: 3px;
+                border-color: #ffffff;
+            }
+    </style>
+</head>
+<body>
+    <div align ="center">
+        <h3 class="display-4">帳票一覧</h3>
+        <br />
+        <br />
+        
+        <div>
+            <center>
+                <a class="btn" id="buttonbackground" asp-area="" asp-controller="Ca300" asp-action="Report_Previous">⇦</a>
+                <label style="font-size: 50px;shape-margin: 0;">@TempData.Peek("gaitoYmCheck")</label>
+                <a class="btn" id="buttonbackground" asp-area="" asp-controller="Ca300" asp-action="Report_Next">⇨</a>
+            </center>
+        </div>
+        <div style="width:100%; height:300px;overflow: auto">
+            <center>
+                <table align="center">
+                    <thead>
+                        <tr align="center">
+                            <th width="4%" id="fixedHeader">No</th>
+                            <th width="43%" id="fixedHeader">帳票名</th>
+                            <th width="10%" id="fixedHeader">作成日</th>
+                            <th width="10%" id="fixedHeader">修正日</th>
+                            <th width="10%" id="fixedHeader">ステータス</th>
+                            <th width="12%" id="fixedHeader"> </th>
+                            <th width="7%" id="fixedHeader"> </th>
+                        </tr>
+                    </thead>
+
+                    <!--取得した件数が「0」の場合、「該当月の帳票リストがありません」が表示される-->
+                    @if (@Model.Count() == 0)
+                    {
+                        <tr arlign="center">
+                            <td colspan="7" bgcolor="#E6E6E6" align="center" height="100px"><b>該当月の帳票リストがありません。</b></td>
+                        </tr>
+                    }
+                    else
+                    {<!--取得した件数が1以上の場合、帳票情報が表示される-->
+
+                        @foreach (var data in Model)
+                        {
+                            <tr style="text-align:center">
+                                <td><center>@data.formNum</center></td>
+                                <td>@data.reportName</td>
+                                <td><center>@data.regYmd</center></td>
+                                <td><center>@data.updYmd</center></td>
+                                <td><center>@data.approveStatus</center></td>
+                                <td>
+                                    <form method="post" asp-controller="Ca300" asp-action="Report_Download">
+                                        <input type="hidden" class="form-control" name="fileName" asp-for="@data.fileName">
+                                        <input type="hidden" class="form-control" name="binaryFile" asp-for="@data.binaryFile">
+                                        <input type="hidden" class="form-control" name="fileSize" asp-for="@data.fileSize">
+                                        <input type="hidden" class="form-control" name="templeteID" asp-for="@data.templeteID">
+                                        <input type="hidden" class="form-control" name="reportID" asp-for="@data.reportID">
+                                        <button type="submit" class="btn btn-info">ダウンロード</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" asp-controller="Ca400" asp-action="Event_Initial">
+                                        <input type="hidden" class="form-control" name="reportID" asp-for="@data.reportID">
+                                        <input type="hidden" class="form-control" name="templeteID" asp-for="@data.templeteID">
+                                        <button id="btnApvl" type="submit" class="btn btn-info">照会</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </center>
+        </div>
+        <div align="right">
+            <a class="btn btn-info" asp-area="" asp-controller="Ca300" asp-action="Report_Write">
+                作成
+            </a>
+        </div>
+    </div>
+</body>

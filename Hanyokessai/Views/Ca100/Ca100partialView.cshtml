@@ -1,0 +1,110 @@
+﻿@model Hanyokessai.Models.Ca100Dto
+
+<table class="table table-bordered" border="1" bordercolor="black">
+    <thead>
+        <tr class="text-center">
+            <th scope="col" class="bg-skyblue text-dark">押印順番</th>
+            <th scope="col" class="bg-skyblue text-dark">押印者</th>
+            <th scope="col" class="bg-skyblue text-dark">メール</th>
+            <th scope="col" class="bg-skyblue text-dark">押印位置</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if ((@Model.lbApprover1 != "" && @Model.lbApprover1 != null) && (@Model.lbAprvPlc1 != @"" && @Model.lbAprvPlc1 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum1</td>
+                <td class="text-left">@Model.lbApprover1</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail1" style="width:100%" value="@Model.lbAprvMail1" /></td>
+                <td class="text-center">@Model.lbAprvPlc1</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover2 != "" && @Model.lbApprover2 != null) && (@Model.lbAprvPlc2 != @"" && @Model.lbAprvPlc2 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum2</td>
+                <td class="text-left">@Model.lbApprover2</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail2" style="width:100%" value="@Model.lbAprvMail2" /></td>
+                <td class="text-center">@Model.lbAprvPlc2</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover3 != "" && @Model.lbApprover3 != null) && (@Model.lbAprvPlc3 != @"" && @Model.lbAprvPlc3 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum3</td>
+                <td class="text-left">@Model.lbApprover3</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail3" style="width:100%" value="@Model.lbAprvMail3" /></td>
+                <td class="text-center">@Model.lbAprvPlc3</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover4 != "" && @Model.lbApprover4 != null) && (@Model.lbAprvPlc4 != @"" && @Model.lbAprvPlc4 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum4</td>
+                <td class="text-left">@Model.lbApprover4</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail4" style="width:100%" value="@Model.lbAprvMail4" /></td>
+                <td class="text-center">@Model.lbAprvPlc4</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover5 != "" && @Model.lbApprover5 != null) && (@Model.lbAprvPlc5 != @"" && @Model.lbAprvPlc5 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum5</td>
+                <td class="text-left">@Model.lbApprover5</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail5" style="width:100%" value="@Model.lbAprvMail5" /></td>
+                <td class="text-center">@Model.lbAprvPlc5</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover6 != "" && @Model.lbApprover6 != null) && (@Model.lbAprvPlc6 != @"" && @Model.lbAprvPlc6 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum6</td>
+                <td class="text-left">@Model.lbApprover6</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail6" style="width:100%" value="@Model.lbAprvMail6" /></td>
+                <td class="text-center">@Model.lbAprvPlc6</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover7 != "" && @Model.lbApprover7 != null) && (@Model.lbAprvPlc7 != @"" && @Model.lbAprvPlc7 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum7</td>
+                <td class="text-left">@Model.lbApprover7</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail7" style="width:100%" value="@Model.lbAprvMail7" /></td>
+                <td class="text-center">@Model.lbAprvPlc7</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover8 != "" && @Model.lbApprover8 != null) && (@Model.lbAprvPlc8 != @"" && @Model.lbAprvPlc8 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum8</td>
+                <td class="text-left">@Model.lbApprover8</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail8" style="width:100%" value="@Model.lbAprvMail8" /></td>
+                <td class="text-center">@Model.lbAprvPlc8</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover9 != "" && @Model.lbApprover9 != null) && (@Model.lbAprvPlc9 != @"" && @Model.lbAprvPlc9 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum9</td>
+                <td class="text-left">@Model.lbApprover9</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail9" style="width:100%" value="@Model.lbAprvMail9" /></td>
+                <td class="text-center">@Model.lbAprvPlc9</td>
+            </tr>
+        }
+        @if ((@Model.lbApprover10 != "" && @Model.lbApprover10 != null) && (@Model.lbAprvPlc10 != @"" && @Model.lbAprvPlc10 != null))
+        {
+            <tr>
+                <td class="text-center bg-skyblue text-dark font-weight-bold">@Model.lbAprvNum10</td>
+                <td class="text-left">@Model.lbApprover10</td>
+                <td class="text-left"><input type="text" asp-for="txtAprvMail10" style="width:100%" value="@Model.lbAprvMail10" /></td>
+                <td class="text-center">@Model.lbAprvPlc10</td>
+            </tr>
+        }
+        <tr>
+            <td class="text-center bg-skyblue text-dark font-weight-bold">最終決裁者</td>
+            <td class="text-left">@Model.fnApprover</td>
+            <td class="text-left"><input type="text" asp-for="txtFnAprvMail" style="width:100%" value="@Model.fnAprvMail" required disabled /></td>
+            <td class="text-center">@Model.fnAprvPlc</td>
+        </tr>
+    </tbody>
+</table>

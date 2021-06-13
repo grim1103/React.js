@@ -1,0 +1,152 @@
+﻿@model Hanyokessai.Models.Za600Dto
+@{
+    ViewData["Title"] = "ZA600";
+}
+
+<style>
+    .row {
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }
+</style>
+
+<p class="h1 m-3" style="text-align:center">会員情報照会</p>
+<div class="container rounded p-3" style="background-color: aliceblue;">
+    <div class="container p-2 m-3">
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label for="labelKnajiName">名前(漢字)</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelKanjiName</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>名前(カナ)</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelKanaName</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>名前(英語)</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelEngName</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>性別</label></b>
+            </div>
+            <div class="col">
+                @if (Model.labelGender == "0")
+                {
+                    <label>男性</label>
+                }
+                else if (Model.labelGender == "1")
+                {
+                    <label>女性</label>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>会社</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelCom</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>所属部署</label></b>
+            </div>
+            <div class="col">
+                <label style="margin-right:10px">@Model.labelDep1</label>
+                <label>@Model.labelDep2</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>職位</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelPos</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>メール</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelMail</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>電話番号</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelPhone</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>郵便番号</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelZip</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>住所</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelAdd</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>入社日</label></b>
+            </div>
+            <div class="col">
+                <label>@Model.labelEntryDate</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-2">
+                <b><label>押印情報</label></b>
+            </div>
+            <div class="col">
+                @*押印情報有無チェック*@
+                @if (Model.labelStamp == "1")
+                {@*押印情報がある場合、イメージを表示する*@
+                    <img name="imgStamp" alt="stamp image" class="img-thumbnail" asp-append-version="true" src="@Model.imgStamp" />
+                }
+                else
+                {
+                    @*押印情報がない場合、イメージ非表示*@
+                }
+            </div>
+        </div>
+    </div>
+    <div style="text-align:center">
+        @*ZA100_メイン画面へ移行*@
+
+        <a class="btn btn-info" asp-area="" asp-controller="Za600" asp-action="event_Cancel">
+            戻る
+        </a>
+        @*ZA400_会員情報修正画面へ移行*@
+        <a class="btn btn-primary" asp-area="" asp-controller="Za600" asp-action="event_Modify" style="margin-left:10px; margin-right:10px">
+            会員情報修正
+        </a>
+        @*ZA500_会員脱会画面へ移行*@
+        <a class="btn btn-danger" asp-area="" asp-controller="Za600" asp-action="event_UnRegister">
+            会員脱会
+        </a>
+    </div>
+</div>

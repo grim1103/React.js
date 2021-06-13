@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "TA200";
+}
+@using Hanyokessai.Models
+@model IEnumerable<Ta200Dto>
+<div class="text-center">
+    <p class="h1">テンプレート一覧</p>
+</div>
+<div class="container rounded-lg p-3">
+    <p class="float-left text-justify align-bottom">▼テンプレート一覧</p>
+    <div class="text-right">
+        @*<a class="btn btn-outline-info" asp-action="event_Cancel" asp-controller="Zb100" asp-area="">戻る</a>*@
+    </div>
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-dark">
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    テンプレート名
+                </td>
+                <td>
+                    作成者
+                </td>
+                <td>
+                    作成日付
+                </td>
+                <td>
+                    更新者
+                </td>
+                <td>
+                    更新日付
+                </td>
+                <td>
+                    ダウンロード
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <td>
+                        @row.txtNo
+                    </td>
+                    <td>
+                        <form method="post" asp-controller="Ta200" asp-action="event_TmpInquiry">
+                            <button type="submit" class="btn btn-sm btn-outline-primary" value="@row.txtTempleteId" name="TempleteId">@row.txtTempleteName</button>
+                        </form>
+                    </td>
+                    <td>
+                        @row.txtRegName
+                    </td>
+                    <td>
+                        @row.txtRegDate
+                    </td>
+                    <td>
+                        @row.txtUpdName
+                    </td>
+                    <td>
+                        @row.txtUpdDate
+                    </td>
+                    <td>
+                        <form method="post" asp-controller="Ta200" asp-action="event_TmpDownload">
+                            <input type="hidden" name="fileName" asp-for="@row.txtFileName" />
+                            <input type="hidden" name="binaryFile" asp-for="@row.txtFileBinary">
+                            <input type="hidden" name="fileSize" asp-for="@row.txtTempleteFileSize">
+                            <button type="submit" class="btn btn-sm btn-outline-primary">ダウンロード</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table text-center align-middle" style="border-top:hidden">
+        <tr>
+            <td>
+                <a class="btn btn-light btn-outline-dark btn-lg" asp-controller="Ta200" asp-action="event_up">テンプレート登録</a>
+                <a class="btn btn-light btn-outline-dark btn-lg" asp-controller="Ta200" asp-action="event_Cancel">戻る</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
