@@ -22,9 +22,10 @@ repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.os
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/isSystem=true
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/name=dropins
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/provider=
+repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/suffix=artifacts.xml
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/type=org.eclipse.equinox.p2.artifact.repository.simpleRepository
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/uri=file\:/C\:/Users/ctr94/Desktop/eclipse/configuration/org.eclipse.osgi/369/data/listener_1925729951/
-repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/version=1
+repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_configuration_org.eclipse.osgi_369_data_listener_1925729951/version=1.0.0
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_p2_org.eclipse.equinox.p2.core_cache/description=
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_p2_org.eclipse.equinox.p2.core_cache/enabled=true
 repositories/file\:_C\:_Users_ctr94_Desktop_eclipse_p2_org.eclipse.equinox.p2.core_cache/isSystem=true
