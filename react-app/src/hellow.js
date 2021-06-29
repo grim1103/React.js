@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    hellow
+    hellows
     <App />
   </React.StrictMode>,
   document.getElementById('root')
