@@ -3,6 +3,7 @@ import './App.css';
 import TOC from './conponents/TOC';
 import Subject from './conponents/Subject';
 import Content from './conponents/Content';
+import Control from './conponents/Control';
 
 
 class App extends Component{
@@ -65,9 +66,8 @@ class App extends Component{
             }.bind(this)}>{this.state.subject.title}</a></h1>
             {this.state.subject.sub}
         </header> */}
-
             <TOC onChangePage={function(id){
-              alert('good');
+             
               this.setState({
                 mode:'read',
                 //id가 문자로 되어있으니 숫자로 변환
@@ -75,6 +75,12 @@ class App extends Component{
               });
             }.bind(this)} data={this.state.contents}>
             </TOC>
+            <Control onChangeMode={function(_mode){
+              this.setState({
+                mode:_mode
+              });
+            }}></Control>
+            console.log(mode);
             <Content title={_title} desc={_desc}></Content>
           </div>
         );
