@@ -2,20 +2,20 @@ import React, {Component} from 'react';
 
 class Control extends Component{
     render(){
-      console.log('Content render');
+      console.log('Control render');
       return(
         <ul>
-        <li><a href="/create" onclick={function(e){
+        <li><a href="/create" onClick={function(e){
           e.preventDefault();
-          this.onChangeMode('create');
+          this.props.onChangeMode('create');
         }.bind(this)}>create</a></li>
-        <li><a href="/update" onclick={function(e){
+        <li><a href="/update" onClick={function(e){
           e.preventDefault();
-          this.onChangeMode('update');
+          this.props.onChangeMode('update');
         }.bind(this)}>update</a></li>
-        <li><input onclick={function(e){
+        <li><input onClick={function(e){
           e.preventDefault();
-          this.onChangeMode('delete');
+          this.props.onChangeMode('delete');
         }.bind(this)} type="button" value="delete"/></li>
       </ul>
       );
