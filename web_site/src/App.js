@@ -11,7 +11,8 @@ class App extends Component {
     super(props);
     this.state = {
      mode:'default',
-     id:null
+     id:null,
+     pw:null
     }
   };
 
