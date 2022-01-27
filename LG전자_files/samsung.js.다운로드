@@ -1,0 +1,200 @@
+$(window).on("scroll",function(){
+    var scroll_top=$(this).scrollTop();
+    // var bottomNu=Number($('.fix_btn1_list').css('bottom').replace('px',''));
+    // NewbottomNu= bottomNu+65;
+    // console.log(scroll_top);
+
+
+
+    $.fn.scrollEnd = function(callback, timeout) {
+        $(this).scroll(function(){
+          var $this = $(this);
+          if ($this.data('scrollTimeout')) {
+            clearTimeout($this.data('scrollTimeout'));
+          }
+     
+          $this.data('scrollTimeout', setTimeout(callback,timeout));
+        }); // 스크롤종료시를 감지하는 스크립트
+    };
+    $(window).scrollEnd(function(){
+        if(scroll_top<200){
+        console.log('back');
+        
+        $('.fix_btn1').animate({top:0});
+        $('.fix_btn2').animate({left:114});
+        
+        }else if(scroll_top>200){
+            console.log('up');
+            $('.fix_btn1').animate({top:-65},200);
+            $('.fix_btn2').animate({left:0},200);
+        }
+        if(scroll_top>3300){
+            $('.vid4').get(0).play();
+        }else{
+            $('.vid4').get(0).pause(); 
+        }
+
+    },1000);
+   
+    if(scroll_top<300){
+        $('.vid').get(0).play();
+        
+    }else{
+        $('.vid').get(0).pause();
+    }
+   
+    if(scroll_top<600){
+        $('.vid1').get(0).pause();
+    }else if(scroll_top>1300){
+        $('.vid1').get(0).pause();
+    }
+    else{
+        $('.vid1').get(0).play(); 
+    }
+   
+    if(scroll_top<1500){
+        $('.vid2').get(0).pause();
+    }else if(scroll_top>2200){
+        $('.vid2').get(0).pause();
+    }
+    else{
+        $('.vid2').get(0).play(); 
+    }
+    
+    if(scroll_top<2400){
+        $('.vid3').get(0).pause();
+    }else if(scroll_top>3200){
+        $('.vid3').get(0).pause();
+    }
+    else{
+        $('.vid3').get(0).play(); 
+    }
+   
+ 
+});
+
+$(document).ready(function(){
+    $('.bottom_list_items').mouseover(function(){
+        $(this).css('border-bottom','5px solid black');   
+        $(this).children('.product').css('display','block');
+    });
+
+    $('.bottom_list_items').mouseleave(function(){
+                
+        $(this).css('border-bottom','none');
+        $(this).children('.product').css('display','none');  
+        
+    });
+
+    $('.bottom_list_items').mouseleave(function(){
+        $(this).css('border-bottom','none');
+        $(this).children('.product').css('display','none');
+        // $(this).css('font-weight','none'); 
+        
+        var a=$('.product_list_bottom').children();
+        console.log(a);
+        // a.css('display','block');
+    });
+
+
+    $('.product_list_top_item').mouseover(function(){
+        $(this).css('border-bottom','2px solid black');
+        
+        var index=$(this).data('index');
+        var a=$('.product_list_bottom').children().eq(index);
+        a.css('display','block');
+        $('.product_list_bottom_items').not(a).css('display','none');
+    });
+    $('.product_list_top_item').mouseleave(function(){
+        $(this).css('border-bottom','none');
+        
+    });
+
+    //회사소개 메뉴 나태내기
+    $('.conponyInt').mouseover(function(){
+        console.log('hi');
+        $('.conponyInt_list').css('display','block');
+        
+    });
+    $('.conponyInt').mouseleave(function(){
+        $('.conponyInt_list').css('display','none');
+    
+    });
+
+    //회사소개 메뉴 없애기
+    $('.conponyInt_list_items').hover(function(){
+        $(this).css('background-color' , '#D3D3D3');
+    });
+    $('.conponyInt_list_items').mouseleave(function(){
+        $(this).css('background-color' , 'white');
+    });
+
+    $('.conponyInt_list_items').hover(function(){
+        $(this).css('background-color' , '#D3D3D3');
+    });
+    $('.conponyInt_list_items').mouseleave(function(){
+        $(this).css('background-color' , 'white');
+    });
+
+    //우측 하단 버튼
+    var num= 1;
+    $('.fix_btn1').click(function(){
+        console.log(num)
+        
+        if(num%2 != 0){
+            $('.fix_btn1_p').css('background','url(https://www.lge.co.kr/lg5-common/images/icons/icon-more-plus-x.png)').css('background-size','40px');
+            num=num+1;
+            $('.fix_btn1_list').css('display', 'block');
+            
+        }else{
+            $('.fix_btn1_p').css('background','url(https://www.lge.co.kr/lg5-common/images/icons/icon_img_floating_40.svg)').css('background-size','40px');
+            num=num+1
+            $('.fix_btn1_list').css('display', 'none');
+        }   
+    });
+    $('.fix_btn2').click(function(){
+        $('html,body').stop().animate({scrollTop:0},300);
+    });
+
+    //메뉴전체보기 클릭
+    
+    var open=0;
+    $('.all_menu_items').click(function(){
+        $(this).toggleClass('change');
+        
+        var text=$(this).text();
+        console.log(text);
+
+        if(open%2==0){
+            $('.footer_open').css('display','block');
+            open=open+1;
+        }else{
+            $('.footer_open').css('display','none');
+            open=open+1;
+        }
+    });
+    
+    //언어버튼
+    var lenguege=0;
+    $('.middle_items').click(function(){
+        var img=$(this).children('img');
+        
+        if(open%2==0){
+            img.css(
+                'transform','rotate(180deg)'
+            );
+           
+            // img.animateRotate(180);
+            $('.lenguege').css('display','block');
+            open=open+1;
+        }else{
+            img.css({'transform':'rotate(360deg)'});
+            $('.lenguege').css('display','none');
+            open=open+1;
+        }
+    });
+    
+});
+
+
+

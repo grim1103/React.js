@@ -1,0 +1,17 @@
+<svg id="img_Select_MO_128" xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <g id="img_Select_MO_128-2" data-name="img_Select_MO_128">
+    <g id="img_Select_PC_64">
+      <path id="guidebox" d="M0,128H128V0H0Z" fill="none"/>
+      <g id="ic" transform="translate(6 12)">
+        <path id="Combined_Shape" data-name="Combined Shape" d="M66.041,103.243l-9.567-9.567-4.894,6.507a2,2,0,0,1-3.538-.711L43.621,82H24V27.356A5.362,5.362,0,0,0,18.644,22H0V5.857A5.769,5.769,0,0,1,1.645,1.6,6.076,6.076,0,0,1,6,0H54a6.076,6.076,0,0,1,4.355,1.6A5.769,5.769,0,0,1,60,5.857V74.393l10.472,2.65a2,2,0,0,1,.712,3.537l-6.507,4.894,9.567,9.567a2,2,0,0,1,0,2.829l-5.374,5.374a2,2,0,0,1-2.829,0Z" transform="translate(36)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="4"/>
+        <path id="Rectangle" d="M0,4A4,4,0,0,1,4,0H56a4,4,0,0,1,4,4V66a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V22.511H0Z" transform="translate(0 22)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="4"/>
+        <rect id="Rectangle-2" data-name="Rectangle" width="36.005" height="3.44" transform="translate(60.175 28.96)"/>
+        <rect id="Rectangle-3" data-name="Rectangle" width="12" height="4" rx="2" transform="translate(76 18)"/>
+        <rect id="Rectangle-4" data-name="Rectangle" width="12" height="4" rx="2" transform="translate(76 38)"/>
+        <circle id="Oval" cx="18" cy="18" r="18" transform="translate(12 46)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="4"/>
+        <rect id="Rectangle-5" data-name="Rectangle" width="32" height="4" rx="2" transform="translate(14 32)"/>
+        <path id="Path_40" data-name="Path 40" d="M4.138,29.611a2,2,0,0,1-2-3L16.282,2.882a2,2,0,0,1,3.436,0L33.86,26.607a2,2,0,0,1-2,3L23.8,28.471V42a2,2,0,0,1-2,2H14.2a2,2,0,0,1-2-2V28.471Z" transform="translate(63.716 82.172) rotate(-45)" fill="none" stroke="#da0f47" stroke-miterlimit="10" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+</svg>

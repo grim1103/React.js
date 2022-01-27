@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<style>
+		@import url(css/style.css);
+	</style>
+	<script type="text/javascript">
+		function cssChange() {	
+				var a = document.getElementById("red");
+				var value=a.style.backgroundColor;
+				
+				if(value!="white"){
+					
+					a.style.backgroundColor = "white"
+					
+				}else if(value="white"){
+					
+					a.style.backgroundColor = "red";
+				} 
+		}
+		function cssChange2() {	
+				var a = document.getElementById("blue");
+				var value=a.style.backgroundColor;
+				
+				if(value!="white"){
+					
+					a.style.backgroundColor = "white"
+					
+				}else if(value="white"){
+					
+					a.style.backgroundColor = "blue";
+				} 
+		}
+		function cssChange3() {	
+				var a = document.getElementById("green");
+				var value=a.style.backgroundColor;
+				alert(value);
+				if(value!="white"){
+					
+					a.style.backgroundColor = "white"
+					
+				}else if(value="white"){
+					
+					a.style.backgroundColor = "green";
+				} 
+		}
+		function cssAllChange() {
+				var a = document.getElementById("red");
+				var b = document.getElementById("blue");	
+				var c = document.getElementById("green");
+				var value=a.style.backgroundColor;
+				alert(value);
+				if(value!="white"){
+					
+					a.style.backgroundColor = "white"
+					
+				}else if(value="white"){
+					
+					a.style.backgroundColor = "red";
+				}
+				if(b.style.backgroundColor!="white"){
+					
+					b.style.backgroundColor = "white"
+					
+				}else if(b.style.backgroundColor="white"){
+					
+					b.style.backgroundColor = "blue";
+				} 
+				if(c.style.backgroundColor!="white"){
+					
+					c.style.backgroundColor = "white"
+					
+				}else if(c.style.backgroundColor="white"){
+					
+					c.style.backgroundColor = "green";
+				}  
+		}
+	</script>
+<body>
+	<div class="main">
+		<div class="red" id="red" onclick="cssChange()"></div>
+		<div class="blue" id="blue"onclick="cssChange2()"></div>
+		<div class="green" id="green"onclick="cssChange3()"></div>
+		<div class="green button" onclick="cssAllChange()"><button type="button">All Change</button></div>
+	</div>
+
+</body>
+</html>
