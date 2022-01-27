@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		a{
+			text-decoration-line: none;
+			color:black;
+		}
+		.main{
+			position:relative;
+			margin-left:24px;
+		}
+		.text{
+			font-size:14px;
+			line-height: 24px;
+		}
+		.con{
+			position:absolute;
+			top:20px;
+			left:-6px;
+			max-width: 125px;
+			padding-top: 12px;
+			z-index: 104;
+		}
+		.conponyInt_list_box{
+			position:absolute;
+			top:20px;
+			left:-6px;
+			max-width: 125px;
+			padding-top: 12px;
+			z-index: 500;
+		}
+		.contents{
+			padding:4px 0;
+			border-radius: 4px;
+			background-color: #fff;
+			box-shadow: 0 4px 12px 0 rgb(0 0 0/15%);
+		}
+		.conponyInt_list_contents{
+			padding:4px 0;
+			border-radius: 4px;
+			background-color: #fff;
+			box-shadow: 0 4px 12px 0 rgb(0 0 0/15%);
+		}
+		.contents a{
+			display: block;
+			padding:8px 24px;
+			font-size: 14px;
+			line-height: 24px;
+			text-align: center;
+		}
+		.conponyInt_list_contents a{
+			display: block;
+			padding:8px 24px;
+			font-size: 14px;
+			line-height: 24px;
+			text-align: center;
+		}
+		.ya::after{
+			content: "";
+		    display: inline-block;
+		    width: 16px;
+		    height: 16px;
+		    margin-left: 4px;
+		    
+		    background: url(https://www.lge.co.kr/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+		    background-size: 14px 14px;
+		}
+		.hwasal:after{
+			content: "";
+		    display: inline-block;
+		    width: 16px;
+		    height: 16px;
+		    margin-left: 4px;
+		    
+		    background: url(https://www.lge.co.kr/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+		    background-size: 14px 14px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.items').hover(function(){
+				$(this).css('background-color' , 'gray');
+			});
+			$('.items').mouseleave(function(){
+				$(this).css('background-color' , 'white');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div class="main">
+		<div class="text">회사소개</div>
+		<div class="con">
+	        <div class="contents">
+	            <div class="items"><a href="">기업정보</a></div>
+	            <div class="items"><a href="">인재채용</a></div>
+	            <div class="items"><a href="">투자자정보</a></div>
+	            <div class="items"><a href="">준법경영</a></div>
+	            <div class="items"><a href="">ESG경영</a></div>
+	            <div class="items"><a class="ya" href="">뉴스</a></div>
+	            <div class="items"><a class="ya" href="">열린구매</a></div>
+	        </div>
+    	</div>
+	</div>
+	
+</body>
+</html>

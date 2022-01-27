@@ -1,0 +1,1118 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Rokkitt:wght@300;900&display=swap');
+
+
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+
+    margin: 0 0;
+    padding:0 0;
+}
+body html{
+    margin:0 0;
+    padding:0 0;
+}
+a{
+    text-decoration-line: none;
+    color:#000;
+}
+a:hover{
+    text-decoration:underline;
+}
+ul{
+    list-style: none;
+}
+.ya p{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    background:url(https://www.lge.co.kr/lg5-common/images/icons/btn-outlink-16.svg)
+}
+.header{
+    /* width:100%; */
+    position:relative;
+}
+.header_content{
+    /* position: relative; */
+    max-width: 1760px;
+    margin: 0 auto;
+}
+.header_top{
+    /* width:1760px; */
+    /* overflow: hidden; */
+    height: 30px;
+    margin:0 auto;
+    padding:18px 0;
+}
+.logo{
+    float:left;
+    padding-left: 42px;
+}
+.logo a{
+    display: block;
+    width: 100px;
+    height: 29px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/header/lg_logo.svg);
+    background-size: 100% 100%;
+}
+.utility{ 
+    float: right;
+    margin:0 auto;
+    font-weight: 500;
+}
+.utility_items{
+    position:relative;
+    cursor: pointer;
+    float:left;
+}
+.conponyInt_list{
+    display: none;
+}
+.conponyInt_list_box{
+    position: absolute;
+    left: -31px;
+    top: 18px;
+    max-width: 125px;
+    padding-top: 12px;
+    z-index: 104;
+}
+.conponyInt_list_items a{
+    text-decoration-line: none;
+}
+.conponyInt_list_contents{
+    padding:4px 0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0/15%);
+}
+.conponyInt_list_contents a{
+    display: block;
+    padding:8px 24px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+}
+.hwasal:after{
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/btn-outlink-16.svg) no-repeat 50%;
+    background-size: 14px 14px;
+}
+
+.search{
+    float:left;
+    padding-right:5px;
+}
+.search a {
+    display: block;
+    width:24px;
+    height:24px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/icons/icon-search-48.svg);
+    background-size: 100% 100%;
+    
+}
+.mypage{
+    float:left;
+    margin-left:10px;
+    padding-right:5px;
+}
+.mypage a{
+    display: block;
+    width:24px;
+    height:24px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/icons/icon-person.svg);
+    background-size: 100% 100%;
+}
+.cart{
+    float: left;
+    margin-left:10px;
+}
+.cart a{
+    display: block;
+    width:24px;
+    height:24px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/icons/icon-cart-48.svg);
+    background-size: 100% 100%;
+}
+.conponyInt{
+    float:left;
+    
+    /* margin-left:30px; */
+    font-size: 14px;
+    line-height: 24px;
+    
+}
+.back::before{
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    margin-right: 24px;
+    /* background-color: #ddd; */
+    content: '';
+}
+.back::after{
+    display: inline-block;
+    width: 1px;
+    height: 14px;
+    margin-right: 24px;
+    background-color: #ddd;
+    content: '';
+}
+
+.links{
+    float:left;
+    /* margin-left:30px; */
+}
+.link{
+    padding-right: 34px;
+    font-size: 14px;
+    line-height: 24px;
+    float:left;
+    /* margin-right:50px; */
+}
+.link a{
+    display: inline-block;
+    
+    width:15px;
+    height:15px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/icons/btn-outlink-16.svg);
+    background-size: 100% 100%;
+}
+.header_bottom{
+    height: 40px;
+    margin:0 auto;
+    padding-left:42px;
+}
+.contents{
+   
+    width:100%;
+    margin:0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.bottom_list{
+    width:100%;
+    margin-right: 24px;
+    
+}
+.bottom_list_items{
+    cursor: pointer;
+    float:left;
+    margin-right: 24px;
+    
+}
+
+.bottom_list_items span{
+    
+    display: block;
+    padding: 4px 0 8px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    
+}
+#red_dot_box{
+    position: relative;
+}
+#red_dot::before{
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #da0f47;
+    content: '';
+}
+/* 상단바 */
+.product{
+    position: absolute;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    left:0;
+    top:107px;
+    z-index: 10;
+    display: none;
+    background-color: white;
+    border-bottom: 1px solid #ddd; 
+}
+.product_list_box{
+   
+    width:1760px;
+    padding:25px 40px 0 ;
+    margin:0 auto;
+}
+.product_list_top{
+    width: 100%;
+    padding-left: 42px;
+}
+
+.product_list_bottom{
+    /* position: relative; */
+    /* width: 100%; */
+    display: block;
+    padding:28px 42px 64px;
+    
+}
+.product_list_bottom_item_title a{
+    display: inline-block;
+    width:16px;
+    height:16px;
+    text-decoration: none;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/btn-arr-16-black-sm.svg) no-repeat right center;
+}
+
+.product_list_bottom_items{
+    /* position: absolute; */
+    width: 100%;
+    float:left;
+}
+.product_list_top_item{
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+    color: #666;
+    
+    /* display: inline-block; */
+}
+.product_list_top_item a{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 500;
+}
+.product_list_story{
+    
+}
+
+.product_list_bottom_item_title{
+    font-weight: 600;
+}
+
+
+.product_list_bottom_item{
+    float:left;
+    padding-right:24px;
+    width:22.5%;
+    min-height: 1px;
+    padding-bottom:64px;
+    
+    
+}
+.product_list_bottom_item_sub{
+    margin-top:16px;
+    font-weight: normal;
+    padding-right: 18px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #111;  
+}
+#product_list_bottom_item_title_margin{
+    margin-bottom: 32px;
+}
+#product_list_bottom_item_sub_margin{
+    margin-bottom: 8px;
+}
+.up{
+    margin-bottom:32px;
+}
+.product_img{
+    
+    width: 100%;
+    margin-right:50px;
+    text-align:center;
+}
+.product_img a{
+    text-decoration-line: none;
+}
+.product_img a span{
+    font-size :18px;
+    font-weight: 700;
+    line-height:28px;
+}
+.product_list_bottom_heshitage{
+    margin-top: 48px;
+}
+.product_list_bottom_heshitage a{
+    display: inline-block;
+    margin-bottom: 8px;
+    padding: 7px 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: #666;
+}
+.category-title{
+    /* margin-bottom: 32px; */
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+}
+.product_list_bottom_item_title p{
+    display: inline-block;
+    cursor: pointer;
+    width:16px;
+    height:16px;
+    margin:0;
+    text-decoration: none;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/btn-arr-16-black-sm.svg) no-repeat right center;
+}
+/* 상단바 */
+.bottom_links{
+    float:left;
+    border-radius: 20px;
+    margin:0 0;
+    overflow: hidden;
+    padding:8px 16px;
+    background-color: #f4f4f4;
+}
+.bottom_link{
+    cursor: pointer;
+    float: left;
+    margin:0 auto;
+    padding-right: 10px;
+    /* align-items: center; */
+}
+.bottom_link1{
+    display: inline-block;
+    margin-left: -5px;
+    width:103px;
+    height: 18px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/header/logo-signature.svg);
+    background-size: 100% 100%;
+}
+.bottom_link2{
+    display: inline-block;
+    margin-left: 6px;
+    width:97px;
+    height: 18px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/header/logo-objet-collection.svg);
+    background-size: 100% 100%;
+}
+.bottom_link3{
+    display: inline-block;
+    margin-left: 9px;
+    width:53px;
+    height: 18px;
+    background-image: url(https://www.lge.co.kr/lg5-common/images/header/logo-thinq.svg);
+    background-size: 100% 100%;
+}
+
+
+.scene-cover{
+    width:100%;
+    margin:0 auto;
+    padding:0 0;
+    
+}
+.scene{
+    position: relative;
+    width: 100%;
+    max-width: 1760px;
+    background-color: #fff;
+    margin: 0 auto;
+    /* padding: 0 30px; */
+}
+.scene_video{
+    /* background-color: yellowgreen; */
+    padding: 0 30px;
+    /* width: 1700px; */
+    height:650px;
+    margin:0 auto;
+}
+.text_img{
+    position:absolute;
+    z-index: 2;
+    top: 33px;
+    right: 36px;
+}
+.video_img{
+    cursor: pointer;
+    position: relative;
+    width:100%;
+    height:100%;
+}
+.video_img video{
+    width:100%;
+    height:100%;
+    
+}
+
+.scene_video_about{
+    /* width:1700px; */
+    
+    margin:0 auto;
+    
+    padding: 23px 30px 100px 30px;
+    text-align: center;
+}
+.scene_video_about_main{
+    display: block;
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 10px;
+    
+    font-weight: bold;
+}
+.scene_video_about_sub{
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    margin-bottom:24px;
+}
+.scene_video_about_pluse{
+    
+    width:auto;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    padding-top:11px;
+    
+}
+.scene_video_about_pluse span:hover{
+    border: 1px solid #e2132c;
+    border-radius: 26px;
+    background-color: #e2132c;
+    color:white;
+}
+.scene_video_about_pluse span{
+    cursor: pointer;
+    margin: 0 3px;
+    line-height: 20px;
+    padding: 10px 30.5px;
+    width: auto;
+    min-width: 126px;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 30px;
+}
+.btn{
+    z-index: 500;
+    position: fixed;
+    top: 89%;
+    left: 94.5%;
+}
+
+
+.fix_btn1{
+    position: relative;
+    background-color: #fa263e;
+    width:56px;
+    height:56px;
+    border-radius: 50%;
+    text-align: center;
+    
+}
+
+.fix_btn2{
+    position: relative;
+    background-color: #fff;
+    width:56px;
+    height:56px;
+    top:-56px;
+    left:114px;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 4px 11px 0 rgb(0 0 0 / 15%);
+}
+.fix_btn2:hover{
+    
+    background-color: #0f0;
+}
+
+.fix_btn1:hover{
+    background-color: #da0f47;
+}
+.fix_btn1 p{
+    display: inline-block;
+    margin-top: 8px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    
+}
+.fix_btn1_p{
+    display: inline-block;
+    margin-top: 8px;
+    cursor: pointer;
+    background:url(https://www.lge.co.kr/lg5-common/images/icons/icon_img_floating_40.svg) no-repeat;
+}
+.fix_btn1_p.change{
+    background:url(https://www.lge.co.kr/lg5-common/images/icons/icon-more-plus-x.png) no-repeat;
+    background-size: 40px;
+    transform: rotate(45deg);
+}
+
+.fix_btn2 p{
+    display: inline-block;
+    margin-top: 8px;
+    width: 40px;
+    height: 40px;
+    background:url(https://www.lge.co.kr/lg5-common/images/icons/icon-top-new.svg) no-repeat;
+}
+
+.fix_btn1_list{
+    position: absolute;
+    width: 210px;
+    right: -3px;
+    bottom: 76px;
+    display: none;
+    flex-direction: column;
+}
+
+.fix_btn1_list_item{
+    position: relative;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    margin-top:10px;
+}
+.fix_btn1_list_item a:active{
+    border-radius: 28px;
+    border:1px solid #da0f47;
+}
+.fix_btn1_list_item a{
+    text-decoration-line: none;
+    display: block;
+    /* min-width: 170px; */
+    padding: 14px 68px 14px 28px;
+    border: 1px solid #fff;
+    border-radius: 28px;
+    box-shadow: 0 4px 11px 0 rgb(0 0 0 / 15%);
+    background: #fff no-repeat right 16px center;
+    text-align: center;
+    
+}
+#num1{
+    left: 153px;
+    top: 0;
+    position: absolute;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/icon-chat-40.svg); 
+}
+#num2{
+    left: 153px;
+    top: 0;
+    position: absolute;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/img_shop_40.svg); 
+}
+#num3{
+    left: 153px;
+    top: 0;
+    position: absolute;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/icon_floating_solutions.svg); 
+    background-size: 40px;
+}
+#num4{
+    left: 153px;
+    top: 0;
+    position: absolute;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/icon_find-center.svg); 
+    background-size: 40px;
+}
+
+
+.section-cover{
+    width:1380px;
+    margin:0 auto;
+    max-width: 1460px;
+   
+    padding: 0 40px;
+}
+.top_text{
+    margin-bottom: 32px;
+    text-align: center;
+}
+.section1{
+    /* max-width: 1460px; */
+    margin-top:10px;
+}
+.section_last{
+   margin:120px 0; 
+}
+.section{
+    max-width: 1460px;
+    margin: 120px auto 0;
+    /* padding: 0 0; */
+}
+.top_text span{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 46px;
+}
+#top_text_items{
+    position:absolute;
+
+}
+.center_img{
+    position:relative;
+    /* width: 1404px;
+    height: 174px; */
+}
+.think_box{
+    width: 1404px;
+    height:174px;
+}
+
+.inner_text{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 50%;
+    padding: 0;
+    left: auto;
+    top:35%;
+    text-align: center;
+    color:#fff;
+}
+
+.inner_text p{
+    font-size:40px;
+    line-height: 48px;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+.inner_text span{
+    display: inline-block;
+    margin-top: 22px;
+    padding:10px 31px 12px 31px;
+    border-radius: 23px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 23px;
+    border:1px solid #fff;
+}
+.center_img_list{
+    /* display: inline-block; */
+    float: left;
+    /* padding:0 12px; */
+    /* vertical-align: top; */
+    width:702px;
+    height:174px;   
+}
+
+
+.section_list_items{
+    position:relative;
+    
+    width:678px;
+    height:174px;
+    
+    border-radius: 16px;
+    background-color: #fff;
+    box-shadow: 1px 4px 12px 0 rgb(0 0 0/14%);
+    
+}
+.section_list_items img{
+    position:absolute;
+    top: 54px;
+    left: 50px;
+    width: 64px;
+    height: 64px;
+}
+#span1{
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+}
+#span2{
+    display: block;
+    margin-top: 8px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 29px;
+}
+.section_list_text{
+    cursor: pointer;
+    padding:48px 50px 48px 154px;
+}
+.section_last_box{
+    width:100%;
+    padding: 32px 0;
+    background: #f4f4f4;
+}
+.section_last_content{
+    width: 1404px;
+    height: 204px;
+    margin:0 auto;
+}
+.secton_last_items{
+    width:467px;
+    height:204px;
+    float: left;
+    /* background: #fff; */
+    /* border-radius: 8px; */
+}
+.item_background{
+    text-align: center;
+    width:444px;
+    height:204px;
+    background-color: #fff;
+    border-radius: 8px;
+    
+}
+.item_fix{
+    cursor: pointer;
+    padding-top:38px;
+}
+.item_fix span{
+    display:block;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 26px;
+    text-align: center;
+}
+.item_fix a{
+    text-decoration-line: none;
+    display: block;
+    margin-top: 8px;
+}
+
+.membership{
+    width:  1404px;
+    height: 156px;
+}
+.membership_list{
+    float: left;
+    width:702px;
+    height:156px;
+}
+.membership_fix{
+    cursor: pointer;
+    position: relative;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    width:678px;
+    height:156px;
+}
+.membership_fix img{
+    display: block;
+    position: absolute;
+    top: 45px;
+    left: 50px;
+    width: 64px;
+    height: 64px;
+}
+.membership_fix span{
+    display:block;
+    text-align: start;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.membership_fix a{
+    text-decoration-line: none;
+    display: block;
+    margin-top: 8px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.membership_text{
+    padding:48px 50px 48px 154px;
+}
+.footer{
+    padding:0 40px 48px;
+    background: #f4f4f4;
+}
+.footer_con{
+    margin:0;
+    padding:0;
+}
+.footer_area{
+    max-width: 1284px;
+    margin: 0 auto;
+}
+.footer_top{
+    position: relative;
+    padding-bottom: 136px;
+}
+.all_menu{
+    width:100%;
+    position: absolute;
+    text-align: center;
+    bottom:0;
+    top:0;
+    left:0;
+    padding:48px 0;
+}
+.all_menu_items{
+    cursor: pointer;
+    display: inline;
+    border:1px solid black;
+    min-width: 80px;
+    padding: 9px 12.5px;
+    border-radius: 20px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+
+}
+.section_sub_item a{
+    color:#616161;
+}
+.all_menu_items span{
+    
+    font-size: 14px;
+    line-height: 24px;
+}
+.all_menu_items::after{
+    content: ' ';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    margin-top: 5px;
+    background: url(https://www.lge.co.kr/lg5-common/images/icons/icon-arr-footer-16.svg) center no-repeat;
+    /* transform: rotate(180deg); */
+    vertical-align: top;
+    transition: all .3s;
+}
+.all_menu_items.change::after{
+    transform: rotate(180deg);
+}
+.footer_bottom{
+    border-top:1px solid #ddd;
+    margin:0;
+    padding:0;
+
+}
+.footer_middle{
+    position:relative;
+    padding:16px 0;
+    height:32px;
+}
+.footer_middle_left{
+    float:left;
+    /* position:relative;
+    padding:16px 0; */
+}
+
+.middle_items{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    margin-right: 24px;
+    padding: 8px 0;
+    vertical-align: top;
+    font-size:12px;
+    line-height: 16px;
+    font-weight: bold;
+    vertical-align: top;
+    
+}
+.middle_items img{
+    position: absolute;
+    left:65px;
+
+}
+
+.lenguege{
+    display: none;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 10;
+    padding: 4px 0;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 2px 4px 12px 0 rgb(0 0 0 / 16%);
+    left: 41px;
+    top: 38px;
+}
+.language_item{
+    display: block;
+    padding: 0 20px;
+    color: #000;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.language_item:hover{
+    background-color: #f3f3f3;
+}
+.footer_middle_right{
+    cursor: pointer;
+    float:right;
+    display:flex;
+    /* font-size:0; */
+}
+.footer_middle_right li{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px 0;
+    color: #666;
+    margin-left:20px;
+}
+.footer_middle_right:before{
+    display: inline-block;
+    margin-right: 4px;
+    width: 28px;
+    height: 28px;
+    background: no-repeat center center;
+    background-size: 100%;
+    content: '';
+}
+.footer_end{
+    position: relative;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+}
+.footer_bottom_line1_items{
+    /* float: left; */
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    
+}
+.font_bold{
+    font-weight: bold;
+}
+.footer_bottom_line2 span{
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+}
+.footer_bottom_line3 span{
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+}
+.footer_bottom_line4 div{
+    display: inline-block;
+}
+.footer_bottom_line4 span{
+    display: inline-block;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+}
+.footer_bottom_line5 span{
+    margin-top: 4px;
+    color: #767676;
+    font-size: 12px;
+    line-height: 16px;
+}
+#font_p{
+    color: #767676;
+    font-size: 12px;
+    line-height: 16px;
+}
+#buisnessman_info{
+    color: #fff;
+    background: #777;
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 12px;
+}
+#buisnessman_info a{
+    text-decoration-line: none;
+    color:#fff!important;
+}
+.footer_bottom_end{
+    margin-top: 16px;    
+    padding-right: 220px 
+}
+.line4_font{
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: top;
+}
+.last_logo{
+    position: absolute;
+    right:0;
+    bottom:0;  
+}
+.last_logo a{
+    position: relative;
+    display: inline-block;
+    padding: 8px 0 8px 56px;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    text-decoration-line: none;
+}
+.last_logo a::before{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    background: url(https://www.lge.co.kr/lg5-common/images/img-ismsp.png) center no-repeat;
+    background-size: 100%;
+}
+.last_logo a dl{
+    display:flex;
+    list-style: none;
+}
+.last_logo a dl dd{
+    margin-left: 7px;
+    font-weight: 400;
+    color: #666;
+}
+.footer_bottom_line1_items a:hover{
+    text-decoration: underline;
+}
+/* 펼치기 */
+.footer_open{
+    display: none;
+}
+.footer_open_section{
+    display: inline-block;
+    width: 11%;
+    margin-top: 48px;
+    padding: 0 6px;
+    vertical-align: top;
+}
+.footer_open_item_top{
+    height: 36px;
+    padding-bottom:10px;
+    font-weight:700;
+    font-size:14px;
+    line-height: 16px;
+    vertical-align: top;
+}
+
+.section_title{
+    display: block;
+    color: #000;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+    /* vertical-align: top; */
+    margin-bottom:10px;
+
+}
+
+.section_items {
+    display: inline-block;
+    color: #616161;
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: top;
+    margin-bottom:20px;
+}
