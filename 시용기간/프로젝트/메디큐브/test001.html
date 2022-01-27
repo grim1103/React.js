@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>슬라이드 무한 슬라이드</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+       body * {
+         height: 50px;
+        }
+        .slide_box{
+            overflow:hidden;
+            width: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -100px;
+            margin-top: -25px;
+            border: 5px blue solid;
+            z-index: 100;
+
+        }
+        #slide_wrap{
+            background: red;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+        }
+        .slide_item{
+            background: green;
+            width: 200px;
+            list-style: none;
+            float: left;
+            text-align: center;
+            line-height: 50px;
+        }
+        .slide_item a{
+            text-decoration: none;
+            color : black;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        무한슬라이드 답안
+    </h1>
+    <div class="slide_box"> 
+        <ul id="slide_wrap">
+            <li class="slide_item" data-index="1" style="background-color:red;"><a href="#">1</a></li>
+            <li class="slide_item" data-index="2" style="background-color:orange;"><a href="#">2</a></li>
+            <li class="slide_item" data-index="3" style="background-color:yellow;"><a href="#">3</a></li>
+            <li class="slide_item" data-index="4" style="background-color:green;"><a href="#">4</a></li>
+            <li class="slide_item" data-index="5" style="background-color:blue;"><a href="#">5</a></li>
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function(){
+
+            setInterval(function() {
+                $('#slide_wrap').animate({
+                    'top':'-50px'
+                    },1000,function(){
+                        $('#slide_wrap').children().eq(0).clone().appendTo('#slide_wrap');
+                        $('#slide_wrap').children().eq(0).remove();
+                        $('#slide_wrap').css('top','0');
+                        console.log( $('#slide_wrap').children());
+                    });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
